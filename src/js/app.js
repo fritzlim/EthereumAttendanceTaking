@@ -53,7 +53,11 @@ App = {
   },
 
   bindEvents: function() {
+    //From Pet Shop example
     $(document).on('click', '.btn-adopt', App.handleAdopt);
+    //******
+
+    $(document).on('click', '.btn-course-signup', App.handleSignup);
   },
 
   markAdopted: function(adopters, account) {
@@ -99,9 +103,27 @@ App = {
         console.log(err.message);
       });
     });
-  }
+  },
 
-};
+  handleSignup: function(event)
+  {
+    event.preventDefault();
+
+    console.log('[handleSignup()] ' + 'course-id=' + this.getAttribute('data-course-id')); //https://stackoverflow.com/questions/33760520/get-data-attributes-in-javascript-code#_=_
+
+    //var petId = parseInt($(event.target).data('id'));
+
+    //var adoptionInstance;
+
+    web3.eth.getAccounts(function(error, accounts) {
+      if (error) {
+        console.log(error);
+      }
+
+      var account = accounts[0];
+    });
+  }
+}; //End of App
 
 $(function() {
   $(window).on('load', function() {

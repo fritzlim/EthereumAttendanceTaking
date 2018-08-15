@@ -1,0 +1,95 @@
+{
+  "contractName": "SignupAndAttendance",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a723058200802a4f132a3f512a27649449e5165848a45ff698d2fcf00afbacdbe9d5100e20029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a723058200802a4f132a3f512a27649449e5165848a45ff698d2fcf00afbacdbe9d5100e20029",
+  "sourceMap": "25:34:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:34:0;;;;;;;",
+  "deployedSourceMap": "25:34:0:-;;;;;",
+  "source": "pragma solidity 0.4.24;\n\ncontract SignupAndAttendance\n{\n\t\n}",
+  "sourcePath": "/home/fritzlim/Desktop/Projects/ConsenSys/2018DeveloperProgram/EthereumAttendanceTaking/contracts/SignupAndAttendance.sol",
+  "ast": {
+    "absolutePath": "/home/fritzlim/Desktop/Projects/ConsenSys/2018DeveloperProgram/EthereumAttendanceTaking/contracts/SignupAndAttendance.sol",
+    "exportedSymbols": {
+      "SignupAndAttendance": [
+        2
+      ]
+    },
+    "id": 3,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 2,
+        "linearizedBaseContracts": [
+          2
+        ],
+        "name": "SignupAndAttendance",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 3,
+        "src": "25:34:0"
+      }
+    ],
+    "src": "0:59:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/fritzlim/Desktop/Projects/ConsenSys/2018DeveloperProgram/EthereumAttendanceTaking/contracts/SignupAndAttendance.sol",
+    "exportedSymbols": {
+      "SignupAndAttendance": [
+        2
+      ]
+    },
+    "id": 3,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 2,
+        "linearizedBaseContracts": [
+          2
+        ],
+        "name": "SignupAndAttendance",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 3,
+        "src": "25:34:0"
+      }
+    ],
+    "src": "0:59:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-08-15T07:49:33.467Z"
+}
