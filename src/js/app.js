@@ -124,7 +124,8 @@ App = {
 
     console.log('[handleSignup()] ' + 'course-id=' + this.getAttribute('data-course-id')); //https://stackoverflow.com/questions/33760520/get-data-attributes-in-javascript-code#_=_
 
-    var courseId = parseBytes32($(event.target).data('course-id'));
+    var courseId = String($(event.target).data('course-id'));
+    console.log("[handleSignup()] courseId=" + courseId);
 
     //var adoptionInstance;
 
@@ -144,6 +145,16 @@ App = {
     });
   }
 }; //End of App
+
+//****** Taken from https://ethereum.stackexchange.com/questions/23549/convert-string-to-bytes32-in-web3j
+// public Bytes32 stringToBytes32(String string)
+// {
+//   byte[] byteValue = string.getBytes();
+//   byte[] byteValueLen32 = new byte[32];
+//   System.arraycopy(byteValue, 0, byteValueLen32, 0, byteValue.length);
+//   return new Bytes32(byteValueLen32);
+// }
+//******
 
 $(function() {
   $(window).on('load', function() {

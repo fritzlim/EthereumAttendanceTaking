@@ -1420,10 +1420,10 @@
     "1534316632784": {
       "events": {},
       "links": {},
-      "address": "0x79c1e45d65d440495d5239020b999323fccf8807",
-      "transactionHash": "0xa498ad62db7cd60429e5719cc3d47903c001a30c7d50acb52a817b4827420350"
+      "address": "0xbfbee1772db0f79252de24a019bb7af2e2d99efe",
+      "transactionHash": "0x2412444a99e5583439300e42b6afbfd7ca735485011827204df19df57ca55cce"
     }
   },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-08-16T10:50:37.471Z"
+  "updatedAt": "2018-08-16T15:13:19.876Z"
 }

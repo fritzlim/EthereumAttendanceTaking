@@ -6,7 +6,7 @@ contract SignupAndAttendance
 	{
 		//bytes32 courseId;
 		bytes32 name;
-		bytes32[] signups; 
+		string[] signups; 
 	}
 
 	mapping (address => uint) public balances;
@@ -17,20 +17,40 @@ contract SignupAndAttendance
 
 	}
 
-	function Signup(bytes32 courseId) view public
+	function Signup(string _courseId) view public
 	{
 		//require(courseId >= 0 && courseId <= 2);
-		bytes32 memory temp = "intro-to-blockchain";
-	  	if(courseId == temp)
+		//bytes32 memory temp = "intro-to-blockchain";
+
+		//bytes32 test = stringToBytes32(_courseId);
+	  	
+	  	if(!compareStrings("intro-to-blockchain", _courseId))
 	  	{
 			require(msg.value == 2 ether);
 			balances[msg.sender] += msg.value;
 	  	}
 
 	  	Attendee storage attendee = attendees[msg.sender];
-		attendee.signups.push(courseId);
+		attendee.signups.push(_courseId);
 
 	  //Return the total number of courses signed up for by the attendee.
 	  //return attendees[msg.sender].signups.push(courseId) - 1;
 	}
+
+	//****** Taken from https://ethereum.stackexchange.com/questions/30912/how-to-compare-strings-in-solidity
+	function compareStrings (string a, string b) view returns (bool)
+	{
+       return keccak256(a) == keccak256(b);
+   	}
+   	//******
+
+	// //****** Taken from https://ethereum.stackexchange.com/questions/23549/convert-string-to-bytes32-in-web3j
+	// function stringToBytes32 (string _string) view public
+	// {
+	//   byte[] storage byteValue = string.getBytes();
+	//   byte[] storage byteValueLen32 = new byte[32];
+	//   System.arraycopy(byteValue, 0, byteValueLen32, 0, byteValue.length);
+	//   return new Bytes32(byteValueLen32);
+	// }	
+	// //******
 }
