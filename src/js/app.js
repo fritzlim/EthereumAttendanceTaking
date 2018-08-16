@@ -49,6 +49,17 @@ App = {
     return App.markAdopted();
   });
 
+  $.getJSON('SignupAndAttendance.json', function(data)
+    {
+      // Get the necessary contract artifact file and instantiate it with truffle-contract
+      App.contracts.SignupAndAttendance = TruffleContract(data);
+
+      // Set the provider for our contract
+      App.contracts.SignupAndAttendance.setProvider(App.web3Provider);
+
+      console.log("[initContract()] Used SignupAndAttendance.json to instantiate contract artifact and set the provider");
+    });
+
     return App.bindEvents();
   },
 
@@ -107,11 +118,13 @@ App = {
 
   handleSignup: function(event)
   {
+    console.log("[handleSignup()]");
+
     event.preventDefault();
 
     console.log('[handleSignup()] ' + 'course-id=' + this.getAttribute('data-course-id')); //https://stackoverflow.com/questions/33760520/get-data-attributes-in-javascript-code#_=_
 
-    //var petId = parseInt($(event.target).data('id'));
+    var courseId = parseBytes32($(event.target).data('course-id'));
 
     //var adoptionInstance;
 
@@ -121,6 +134,13 @@ App = {
       }
 
       var account = accounts[0];
+
+      App.contracts.SignupAndAttendance.deployed().then(function(_instance)
+      {
+        console.log("[handleSignup()] _instance=" + _instance);
+        //return _instance.Signup(courseId, {from: account,value:200000000000000000});
+        return _instance.Signup(courseId, {from: account});
+      });
     });
   }
 }; //End of App

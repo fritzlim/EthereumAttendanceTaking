@@ -1,0 +1,28 @@
+[
+  {
+    "id": 0,
+    "name": "Intro to Blockchain",
+    "description1": "Learn about the fundamentals of blockchain technology and what its use cases are.",
+    "descritpion2": "This course is suitable for beginners without any technical knowledge.",
+    "prerequisiteCourseId": -1, 
+    "costInEth": 0
+  },
+
+  {
+  	"id": 1,
+    "name": "Solidity 101",
+    "description1": "Introducing the Solidity programming language for smart contracts.",
+    "descritpion2": "This course is suitable for software developers who have no prior knowledge of Solidity.",
+    "prerequisiteCourseId": -1, 
+    "costInEth": 2
+  },
+
+  {
+  	"id": 2,
+    "name": "Solidity 102",
+    "description1": "An intermediate course on programming smart contracts using the Solidity language.",
+    "descritpion2": "To take this course, you need to complete and pass Solidity 101.",
+    "prerequisiteCourseId": 1
+    "costInEth": 2
+  },  
+]

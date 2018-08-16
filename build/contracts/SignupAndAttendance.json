@@ -1,20 +1,79 @@
 {
   "contractName": "SignupAndAttendance",
-  "abi": [],
-  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a723058200802a4f132a3f512a27649449e5165848a45ff698d2fcf00afbacdbe9d5100e20029",
-  "deployedBytecode": "0x6080604052600080fd00a165627a7a723058200802a4f132a3f512a27649449e5165848a45ff698d2fcf00afbacdbe9d5100e20029",
-  "sourceMap": "25:34:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:34:0;;;;;;;",
-  "deployedSourceMap": "25:34:0:-;;;;;",
-  "source": "pragma solidity 0.4.24;\n\ncontract SignupAndAttendance\n{\n\t\n}",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "balances",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "attendees",
+      "outputs": [
+        {
+          "name": "name",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "courseId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "Signup",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b506102b0806100206000396000f300608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806327e235e31461005c578063396dc854146100b35780633a7254b414610112575b600080fd5b34801561006857600080fd5b5061009d600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610143565b6040518082815260200191505060405180910390f35b3480156100bf57600080fd5b506100f4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061015b565b60405180826000191660001916815260200191505060405180910390f35b34801561011e57600080fd5b506101416004803603810190808035600019169060200190929190505050610179565b005b60006020528060005260406000206000915090505481565b60016020528060005260406000206000915090508060000154905081565b60007f696e74726f2d746f2d626c6f636b636861696e00000000000000000000000000826000191614151561020b57671bc16d674ec80000341415156101be57600080fd5b346000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055505b600160003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002090508060010182908060018154018082558091505090600182039060005260206000200160009091929091909150906000191690555050505600a165627a7a723058205ef8791fd9efcf525bd4e06fb4026a9fbcb15bb5ef1b598ee7d11bb8bebbeaa30029",
+  "deployedBytecode": "0x608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806327e235e31461005c578063396dc854146100b35780633a7254b414610112575b600080fd5b34801561006857600080fd5b5061009d600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610143565b6040518082815260200191505060405180910390f35b3480156100bf57600080fd5b506100f4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061015b565b60405180826000191660001916815260200191505060405180910390f35b34801561011e57600080fd5b506101416004803603810190808035600019169060200190929190505050610179565b005b60006020528060005260406000206000915090505481565b60016020528060005260406000206000915090508060000154905081565b60007f696e74726f2d746f2d626c6f636b636861696e00000000000000000000000000826000191614151561020b57671bc16d674ec80000341415156101be57600080fd5b346000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082825401925050819055505b600160003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002090508060010182908060018154018082558091505090600182039060005260206000200160009091929091909150906000191690555050505600a165627a7a723058205ef8791fd9efcf525bd4e06fb4026a9fbcb15bb5ef1b598ee7d11bb8bebbeaa30029",
+  "sourceMap": "25:708:0:-;;;235:45;8:9:-1;5:2;;;30:1;27;20:12;5:2;235:45:0;25:708;;;;;;",
+  "deployedSourceMap": "25:708:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;141:41;;8:9:-1;5:2;;;30:1;27;20:12;5:2;141:41:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;185:46;;8:9:-1;5:2;;;30:1;27;20:12;5:2;185:46:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;283:448;;8:9:-1;5:2;;;30:1;27;20:12;5:2;283:448:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;141:41;;;;;;;;;;;;;;;;;:::o;185:46::-;;;;;;;;;;;;;;;;;;;;;;:::o;283:448::-;509:25;385:33;:8;:33;;;;;382:121;;;450:7;437:9;:20;429:29;;;;;;;;487:9;463:8;:20;472:10;463:20;;;;;;;;;;;;;;;;:33;;;;;;;;;;;382:121;537:9;:21;547:10;537:21;;;;;;;;;;;;;;;509:49;;562:8;:16;;584:8;562:31;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;562:31:0;;;;;;;;;;;;;;;;;;;;;;;;;;;283:448;;:::o",
+  "source": "pragma solidity 0.4.24;\n\ncontract SignupAndAttendance\n{\n\tstruct Attendee\n\t{\n\t\t//bytes32 courseId;\n\t\tbytes32 name;\n\t\tbytes32[] signups; \n\t}\n\n\tmapping (address => uint) public balances;\n\tmapping (address => Attendee) public attendees;\n\n\tfunction SignupAndAttendance() public \n\t{\n\n\t}\n\n\tfunction Signup(bytes32 courseId) view public\n\t{\n\t\t//require(courseId >= 0 && courseId <= 2);\n\n\t  \tif(courseId != \"intro-to-blockchain\")\n\t  \t{\n\t\t\trequire(msg.value == 2 ether);\n\t\t\tbalances[msg.sender] += msg.value;\n\t  \t}\n\n\t  \tAttendee storage attendee = attendees[msg.sender];\n\t\tattendee.signups.push(courseId);\n\n\t  //Return the total number of courses signed up for by the attendee.\n\t  //return attendees[msg.sender].signups.push(courseId) - 1;\n\t}\n}",
   "sourcePath": "/home/fritzlim/Desktop/Projects/ConsenSys/2018DeveloperProgram/EthereumAttendanceTaking/contracts/SignupAndAttendance.sol",
   "ast": {
     "absolutePath": "/home/fritzlim/Desktop/Projects/ConsenSys/2018DeveloperProgram/EthereumAttendanceTaking/contracts/SignupAndAttendance.sol",
     "exportedSymbols": {
       "SignupAndAttendance": [
-        2
+        61
       ]
     },
-    "id": 3,
+    "id": 62,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -33,27 +92,747 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2,
+        "id": 61,
         "linearizedBaseContracts": [
-          2
+          61
         ],
         "name": "SignupAndAttendance",
         "nodeType": "ContractDefinition",
-        "nodes": [],
-        "scope": 3,
-        "src": "25:34:0"
+        "nodes": [
+          {
+            "canonicalName": "SignupAndAttendance.Attendee",
+            "id": 7,
+            "members": [
+              {
+                "constant": false,
+                "id": 3,
+                "name": "name",
+                "nodeType": "VariableDeclaration",
+                "scope": 7,
+                "src": "100:12:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 2,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "100:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6,
+                "name": "signups",
+                "nodeType": "VariableDeclaration",
+                "scope": 7,
+                "src": "116:17:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                  "typeString": "bytes32[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 4,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "116:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "id": 5,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "116:9:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                    "typeString": "bytes32[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Attendee",
+            "nodeType": "StructDefinition",
+            "scope": 61,
+            "src": "57:81:0",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 11,
+            "name": "balances",
+            "nodeType": "VariableDeclaration",
+            "scope": 61,
+            "src": "141:41:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+              "typeString": "mapping(address => uint256)"
+            },
+            "typeName": {
+              "id": 10,
+              "keyType": {
+                "id": 8,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "150:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "141:25:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                "typeString": "mapping(address => uint256)"
+              },
+              "valueType": {
+                "id": 9,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "161:4:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 15,
+            "name": "attendees",
+            "nodeType": "VariableDeclaration",
+            "scope": 61,
+            "src": "185:46:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Attendee_$7_storage_$",
+              "typeString": "mapping(address => struct SignupAndAttendance.Attendee)"
+            },
+            "typeName": {
+              "id": 14,
+              "keyType": {
+                "id": 12,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "194:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "185:29:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Attendee_$7_storage_$",
+                "typeString": "mapping(address => struct SignupAndAttendance.Attendee)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 13,
+                "name": "Attendee",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 7,
+                "src": "205:8:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Attendee_$7_storage_ptr",
+                  "typeString": "struct SignupAndAttendance.Attendee"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 18,
+              "nodeType": "Block",
+              "src": "275:5:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 19,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "SignupAndAttendance",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "263:2:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 17,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "275:0:0"
+            },
+            "scope": 61,
+            "src": "235:45:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 59,
+              "nodeType": "Block",
+              "src": "330:401:0",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    },
+                    "id": 26,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 24,
+                      "name": "courseId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 21,
+                      "src": "385:8:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "hexValue": "696e74726f2d746f2d626c6f636b636861696e",
+                      "id": 25,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "397:21:0",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_255aeadacfce7edceb44dcb59d24de58e5ca06a4a93821e41126a0e6edd08eb7",
+                        "typeString": "literal_string \"intro-to-blockchain\""
+                      },
+                      "value": "intro-to-blockchain"
+                    },
+                    "src": "385:33:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 43,
+                  "nodeType": "IfStatement",
+                  "src": "382:121:0",
+                  "trueBody": {
+                    "id": 42,
+                    "nodeType": "Block",
+                    "src": "424:79:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "id": 31,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 28,
+                                  "name": "msg",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 76,
+                                  "src": "437:3:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_message",
+                                    "typeString": "msg"
+                                  }
+                                },
+                                "id": 29,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "value",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": null,
+                                "src": "437:9:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": "==",
+                              "rightExpression": {
+                                "argumentTypes": null,
+                                "hexValue": "32",
+                                "id": 30,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "450:7:0",
+                                "subdenomination": "ether",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_2000000000000000000_by_1",
+                                  "typeString": "int_const 2000000000000000000"
+                                },
+                                "value": "2"
+                              },
+                              "src": "437:20:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            ],
+                            "id": 27,
+                            "name": "require",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [
+                              79,
+                              80
+                            ],
+                            "referencedDeclaration": 79,
+                            "src": "429:7:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                              "typeString": "function (bool) pure"
+                            }
+                          },
+                          "id": 32,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "429:29:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 33,
+                        "nodeType": "ExpressionStatement",
+                        "src": "429:29:0"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 40,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "id": 34,
+                              "name": "balances",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 11,
+                              "src": "463:8:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                                "typeString": "mapping(address => uint256)"
+                              }
+                            },
+                            "id": 37,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 35,
+                                "name": "msg",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 76,
+                                "src": "472:3:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_message",
+                                  "typeString": "msg"
+                                }
+                              },
+                              "id": 36,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "sender",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": null,
+                              "src": "472:10:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "nodeType": "IndexAccess",
+                            "src": "463:20:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "+=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 38,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 76,
+                              "src": "487:3:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 39,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "value",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "487:9:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "src": "463:33:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 41,
+                        "nodeType": "ExpressionStatement",
+                        "src": "463:33:0"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "assignments": [
+                    45
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 45,
+                      "name": "attendee",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 60,
+                      "src": "509:25:0",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Attendee_$7_storage_ptr",
+                        "typeString": "struct SignupAndAttendance.Attendee"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 44,
+                        "name": "Attendee",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7,
+                        "src": "509:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Attendee_$7_storage_ptr",
+                          "typeString": "struct SignupAndAttendance.Attendee"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 50,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 46,
+                      "name": "attendees",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15,
+                      "src": "537:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Attendee_$7_storage_$",
+                        "typeString": "mapping(address => struct SignupAndAttendance.Attendee storage ref)"
+                      }
+                    },
+                    "id": 49,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 47,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 76,
+                        "src": "547:3:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 48,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "547:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "537:21:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Attendee_$7_storage",
+                      "typeString": "struct SignupAndAttendance.Attendee storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "509:49:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 56,
+                        "name": "courseId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 21,
+                        "src": "584:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 51,
+                          "name": "attendee",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 45,
+                          "src": "562:8:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Attendee_$7_storage_ptr",
+                            "typeString": "struct SignupAndAttendance.Attendee storage pointer"
+                          }
+                        },
+                        "id": 54,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "signups",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 6,
+                        "src": "562:16:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
+                          "typeString": "bytes32[] storage ref"
+                        }
+                      },
+                      "id": 55,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "562:21:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_bytes32_$returns$_t_uint256_$",
+                        "typeString": "function (bytes32) returns (uint256)"
+                      }
+                    },
+                    "id": 57,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "562:31:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 58,
+                  "nodeType": "ExpressionStatement",
+                  "src": "562:31:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 60,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "Signup",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 22,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21,
+                  "name": "courseId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60,
+                  "src": "299:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 20,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "299:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "298:18:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 23,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "330:0:0"
+            },
+            "scope": 61,
+            "src": "283:448:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 62,
+        "src": "25:708:0"
       }
     ],
-    "src": "0:59:0"
+    "src": "0:733:0"
   },
   "legacyAST": {
     "absolutePath": "/home/fritzlim/Desktop/Projects/ConsenSys/2018DeveloperProgram/EthereumAttendanceTaking/contracts/SignupAndAttendance.sol",
     "exportedSymbols": {
       "SignupAndAttendance": [
-        2
+        61
       ]
     },
-    "id": 3,
+    "id": 62,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -72,24 +851,751 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2,
+        "id": 61,
         "linearizedBaseContracts": [
-          2
+          61
         ],
         "name": "SignupAndAttendance",
         "nodeType": "ContractDefinition",
-        "nodes": [],
-        "scope": 3,
-        "src": "25:34:0"
+        "nodes": [
+          {
+            "canonicalName": "SignupAndAttendance.Attendee",
+            "id": 7,
+            "members": [
+              {
+                "constant": false,
+                "id": 3,
+                "name": "name",
+                "nodeType": "VariableDeclaration",
+                "scope": 7,
+                "src": "100:12:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 2,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "100:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6,
+                "name": "signups",
+                "nodeType": "VariableDeclaration",
+                "scope": 7,
+                "src": "116:17:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                  "typeString": "bytes32[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 4,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "116:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "id": 5,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "116:9:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                    "typeString": "bytes32[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Attendee",
+            "nodeType": "StructDefinition",
+            "scope": 61,
+            "src": "57:81:0",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 11,
+            "name": "balances",
+            "nodeType": "VariableDeclaration",
+            "scope": 61,
+            "src": "141:41:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+              "typeString": "mapping(address => uint256)"
+            },
+            "typeName": {
+              "id": 10,
+              "keyType": {
+                "id": 8,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "150:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "141:25:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                "typeString": "mapping(address => uint256)"
+              },
+              "valueType": {
+                "id": 9,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "161:4:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 15,
+            "name": "attendees",
+            "nodeType": "VariableDeclaration",
+            "scope": 61,
+            "src": "185:46:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Attendee_$7_storage_$",
+              "typeString": "mapping(address => struct SignupAndAttendance.Attendee)"
+            },
+            "typeName": {
+              "id": 14,
+              "keyType": {
+                "id": 12,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "194:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "185:29:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Attendee_$7_storage_$",
+                "typeString": "mapping(address => struct SignupAndAttendance.Attendee)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 13,
+                "name": "Attendee",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 7,
+                "src": "205:8:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Attendee_$7_storage_ptr",
+                  "typeString": "struct SignupAndAttendance.Attendee"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 18,
+              "nodeType": "Block",
+              "src": "275:5:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 19,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "SignupAndAttendance",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 16,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "263:2:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 17,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "275:0:0"
+            },
+            "scope": 61,
+            "src": "235:45:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 59,
+              "nodeType": "Block",
+              "src": "330:401:0",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    },
+                    "id": 26,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 24,
+                      "name": "courseId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 21,
+                      "src": "385:8:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "!=",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "hexValue": "696e74726f2d746f2d626c6f636b636861696e",
+                      "id": 25,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "string",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "397:21:0",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_stringliteral_255aeadacfce7edceb44dcb59d24de58e5ca06a4a93821e41126a0e6edd08eb7",
+                        "typeString": "literal_string \"intro-to-blockchain\""
+                      },
+                      "value": "intro-to-blockchain"
+                    },
+                    "src": "385:33:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 43,
+                  "nodeType": "IfStatement",
+                  "src": "382:121:0",
+                  "trueBody": {
+                    "id": 42,
+                    "nodeType": "Block",
+                    "src": "424:79:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "id": 31,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 28,
+                                  "name": "msg",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 76,
+                                  "src": "437:3:0",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_magic_message",
+                                    "typeString": "msg"
+                                  }
+                                },
+                                "id": 29,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "value",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": null,
+                                "src": "437:9:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": "==",
+                              "rightExpression": {
+                                "argumentTypes": null,
+                                "hexValue": "32",
+                                "id": 30,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "450:7:0",
+                                "subdenomination": "ether",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_2000000000000000000_by_1",
+                                  "typeString": "int_const 2000000000000000000"
+                                },
+                                "value": "2"
+                              },
+                              "src": "437:20:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            ],
+                            "id": 27,
+                            "name": "require",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [
+                              79,
+                              80
+                            ],
+                            "referencedDeclaration": 79,
+                            "src": "429:7:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                              "typeString": "function (bool) pure"
+                            }
+                          },
+                          "id": 32,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "429:29:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 33,
+                        "nodeType": "ExpressionStatement",
+                        "src": "429:29:0"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 40,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "id": 34,
+                              "name": "balances",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 11,
+                              "src": "463:8:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                                "typeString": "mapping(address => uint256)"
+                              }
+                            },
+                            "id": 37,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 35,
+                                "name": "msg",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 76,
+                                "src": "472:3:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_message",
+                                  "typeString": "msg"
+                                }
+                              },
+                              "id": 36,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "sender",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": null,
+                              "src": "472:10:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "nodeType": "IndexAccess",
+                            "src": "463:20:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "+=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 38,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 76,
+                              "src": "487:3:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 39,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "value",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "487:9:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "src": "463:33:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 41,
+                        "nodeType": "ExpressionStatement",
+                        "src": "463:33:0"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "assignments": [
+                    45
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 45,
+                      "name": "attendee",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 60,
+                      "src": "509:25:0",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Attendee_$7_storage_ptr",
+                        "typeString": "struct SignupAndAttendance.Attendee"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 44,
+                        "name": "Attendee",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7,
+                        "src": "509:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Attendee_$7_storage_ptr",
+                          "typeString": "struct SignupAndAttendance.Attendee"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 50,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 46,
+                      "name": "attendees",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 15,
+                      "src": "537:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Attendee_$7_storage_$",
+                        "typeString": "mapping(address => struct SignupAndAttendance.Attendee storage ref)"
+                      }
+                    },
+                    "id": 49,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 47,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 76,
+                        "src": "547:3:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 48,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "547:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "537:21:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Attendee_$7_storage",
+                      "typeString": "struct SignupAndAttendance.Attendee storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "509:49:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 56,
+                        "name": "courseId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 21,
+                        "src": "584:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 51,
+                          "name": "attendee",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 45,
+                          "src": "562:8:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Attendee_$7_storage_ptr",
+                            "typeString": "struct SignupAndAttendance.Attendee storage pointer"
+                          }
+                        },
+                        "id": 54,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "signups",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 6,
+                        "src": "562:16:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_bytes32_$dyn_storage",
+                          "typeString": "bytes32[] storage ref"
+                        }
+                      },
+                      "id": 55,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "562:21:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_bytes32_$returns$_t_uint256_$",
+                        "typeString": "function (bytes32) returns (uint256)"
+                      }
+                    },
+                    "id": 57,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "562:31:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 58,
+                  "nodeType": "ExpressionStatement",
+                  "src": "562:31:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 60,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "Signup",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 22,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21,
+                  "name": "courseId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60,
+                  "src": "299:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 20,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "299:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "298:18:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 23,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "330:0:0"
+            },
+            "scope": 61,
+            "src": "283:448:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 62,
+        "src": "25:708:0"
       }
     ],
-    "src": "0:59:0"
+    "src": "0:733:0"
   },
   "compiler": {
     "name": "solc",
     "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "1534316632784": {
+      "events": {},
+      "links": {},
+      "address": "0x82c1f3de0db5277cbbf3439e59caa9a2a793759a",
+      "transactionHash": "0x4f0c70955109ad02bb6eda9137d2ef269e6e6e47dafd0e9d8332c506c8899274"
+    }
+  },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-08-15T07:49:33.467Z"
+  "updatedAt": "2018-08-16T10:50:37.469Z"
 }

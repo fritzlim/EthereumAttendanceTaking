@@ -1,5 +1,5 @@
 var Adoption = artifacts.require("Adoption");
-var SignupAndAttendance = artifact.require('SignupAndAttendance');
+var SignupAndAttendance = artifacts.require('SignupAndAttendance');
 
 module.exports = function(deployer) {
   deployer.deploy(Adoption);
