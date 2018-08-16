@@ -17,16 +17,21 @@ contract SignupAndAttendance
 
 	}
 
-	function Signup(string _courseId) view public
+	function Signup(string _courseId) payable public
 	{
 		//require(courseId >= 0 && courseId <= 2);
 		//bytes32 memory temp = "intro-to-blockchain";
 
 		//bytes32 test = stringToBytes32(_courseId);
 	  	
-	  	if(!compareStrings("intro-to-blockchain", _courseId))
+	  	if(compareStrings("intro-to-blockchain", _courseId))
 	  	{
-			require(msg.value == 2 ether);
+			require(msg.value == 0 ether);
+			balances[msg.sender] += msg.value;
+	  	}
+	  	else
+	  	{
+	  		require(msg.value == 2 ether);
 			balances[msg.sender] += msg.value;
 	  	}
 
@@ -36,6 +41,11 @@ contract SignupAndAttendance
 	  //Return the total number of courses signed up for by the attendee.
 	  //return attendees[msg.sender].signups.push(courseId) - 1;
 	}
+
+	// function EtherToWei (uint _ether) view public returns (uint)
+	// {
+	// 	return _ether * 1000000000000000000;
+	// }
 
 	//****** Taken from https://ethereum.stackexchange.com/questions/30912/how-to-compare-strings-in-solidity
 	function compareStrings (string a, string b) view returns (bool)

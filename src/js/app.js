@@ -20,6 +20,27 @@ App = {
       }
     });
 
+    //Load course data
+    //   $.getJSON('../courses.json', function(data)
+    //   {
+    //     var courseCostInEth = [];
+
+    //     for (i = 0; i < data.length; i ++)
+    //     {
+    //       // petTemplate.find('.panel-title').text(data[i].name);
+    //       // petTemplate.find('img').attr('src', data[i].picture);
+    //       // petTemplate.find('.pet-breed').text(data[i].breed);
+    //       // petTemplate.find('.pet-age').text(data[i].age);
+    //       // petTemplate.find('.pet-location').text(data[i].location);
+    //       // petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+
+    //       // petsRow.append(petTemplate.html());
+
+    //       courseCostInEth[i] = data[i].costInEth;
+    //       console.log("[App.init()] courseCostInEth[" + i + "]=" + data[i].costInEth);
+    //     }
+    // });
+
     return App.initWeb3();
   },
 
@@ -138,9 +159,14 @@ App = {
 
       App.contracts.SignupAndAttendance.deployed().then(function(_instance)
       {
+        var costInEth = 0;
+
+        if(courseId != "intro-to-blockchain")
+          costInEth = 2;
+
         console.log("[handleSignup()] _instance=" + _instance);
-        //return _instance.Signup(courseId, {from: account,value:200000000000000000});
-        return _instance.Signup(courseId, {from: account});
+        return _instance.Signup(courseId, {from: account, value: costInEth * 1000000000000000000});
+        //return _instance.Signup(courseId, {from: account});
       });
     });
   }
