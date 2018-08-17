@@ -12,7 +12,7 @@ contract SignupAndAttendance
 	mapping (address => uint) public balances;
 	mapping (address => Attendee) public attendees;
 
-	function SignupAndAttendance() public 
+	constructor() public 
 	{
 
 	}
@@ -48,7 +48,7 @@ contract SignupAndAttendance
 	// }
 
 	//****** Taken from https://ethereum.stackexchange.com/questions/30912/how-to-compare-strings-in-solidity
-	function compareStrings (string a, string b) view returns (bool)
+	function compareStrings (string a, string b) view public returns (bool)
 	{
        return keccak256(a) == keccak256(b);
    	}
