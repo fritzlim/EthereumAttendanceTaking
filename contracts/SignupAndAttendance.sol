@@ -12,6 +12,8 @@ contract SignupAndAttendance
 	mapping (address => uint) public balances;
 	mapping (address => Attendee) public attendees;
 
+	event CourseSignupSucessful(string _courseId);
+
 	constructor() public 
 	{
 
@@ -38,9 +40,16 @@ contract SignupAndAttendance
 	  	Attendee storage attendee = attendees[msg.sender];
 		attendee.signups.push(_courseId);
 
+		emit CourseSignupSucessful(_courseId);
+
 	  //Return the total number of courses signed up for by the attendee.
 	  //return attendees[msg.sender].signups.push(courseId) - 1;
 	}
+
+	// function EmitCourseSignupSucessful(_courseId)
+	// {
+	// 	emit CourseSignupSucessful(_courseId);
+	// }
 
 	// function EtherToWei (uint _ether) view public returns (uint)
 	// {

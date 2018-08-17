@@ -159,6 +159,27 @@ App = {
 
       App.contracts.SignupAndAttendance.deployed().then(function(_instance)
       {
+        //****** https://gist.github.com/robertsimoes/4523a225801739e63b3feb5446f7c6e3
+        // And https://www.google.com/search?client=ubuntu&channel=fs&q=solidity+watch&ie=utf-8&oe=utf-8
+        // And https://programtheblockchain.com/posts/2018/01/24/logging-and-watching-solidity-events/
+
+        _instance.CourseSignupSucessful(courseId).watch(function(error, result)
+        {
+          if (!error)
+          {
+            // No error
+            console.log("[handleSignup()] Event fired. No error");
+            $('#btn-course-1[data-course-id=' + courseId + ']').text('Enrolled').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          }
+
+          else
+          {
+            // Error
+            console.log("[handleSignup()] " + error);
+          }
+        });
+        //******
+
         var costInEth = 0;
 
         if(courseId != "intro-to-blockchain")
