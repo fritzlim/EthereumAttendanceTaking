@@ -163,19 +163,19 @@ App = {
         // And https://www.google.com/search?client=ubuntu&channel=fs&q=solidity+watch&ie=utf-8&oe=utf-8
         // And https://programtheblockchain.com/posts/2018/01/24/logging-and-watching-solidity-events/
 
-        _instance.CourseSignupSucessful(courseId).watch(function(error, result)
+        _instance.CourseSignupSuccessful(courseId).watch(function(error, result)
         {
           if (!error)
           {
             // No error
             console.log("[handleSignup()] Event fired. No error");
-            $('#btn-course-1[data-course-id=' + courseId + ']').text('Enrolled').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+            $('.btn-course-signup[data-course-id=' + courseId + ']').text('Enrolled').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
           }
 
           else
           {
             // Error
-            console.log("[handleSignup()] " + error);
+            console.log("[handleSignup()] CourseSignupSuccessful() error=" + error);
           }
         });
         //******
