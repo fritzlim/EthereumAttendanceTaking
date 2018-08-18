@@ -168,8 +168,7 @@ App = {
           if (!error)
           {
             // No error
-            console.log("[handleSignup()] Event fired. No error");
-            $('.btn-course-signup[data-course-id=' + courseId + ']').text('Enrolled').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+            console.log("[handleSignup()] CourseSignupSuccessful() event fired. No error");
           }
 
           else
@@ -186,6 +185,29 @@ App = {
           costInEth = 2;
 
         console.log("[handleSignup()] _instance=" + _instance);
+
+        //****** https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethfilter
+        //And https://ethereum.stackexchange.com/questions/9636/whats-the-proper-way-to-wait-for-a-transaction-to-be-mined-and-get-the-results
+        
+        var option = 'pending';
+
+        web3.eth.filter(option, function(error, result)
+        //web3.eth.filter(option).watch(function(error, result)
+        {
+          if (!error)
+          {
+            console.log('[handleSignup()] courseId=' + courseId + ', ' + option + ' block result=' + result);
+            $('.btn-course-signup[data-course-id=' + courseId + ']').text('Enrolled').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+            web3.eth.filter(option).stopWatching();
+          }
+          else
+          {
+            console.log('[handleSignup()] latest block error=' + error);
+            web3.eth.filter(option).stopWatching();
+          }
+        });
+        //******
+
         return _instance.Signup(courseId, {from: account, value: costInEth * 1000000000000000000});
         //return _instance.Signup(courseId, {from: account});
       });
