@@ -148,6 +148,9 @@ App = {
     var courseId = String($(event.target).data('course-id'));
     console.log("[handleSignup()] courseId=" + courseId);
 
+    $('.btn-course-signup[data-course-id=' + courseId + ']').text('Awaiting payment').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+    $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+
     //var adoptionInstance;
 
     web3.eth.getAccounts(function(error, accounts) {
@@ -198,6 +201,16 @@ App = {
           {
             console.log('[handleSignup()] courseId=' + courseId + ', ' + option + ' block result=' + result);
             $('.btn-course-signup[data-course-id=' + courseId + ']').text('Enrolled').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+
+                       //if($('.btn-course-signup[data-course-id!=' + courseId + ']').text() != 'Enrolled')
+            //$('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+
+            if($('.btn-course-signup').text() != 'Enrolled') //http://api.jquery.com/text/
+              $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+
+          else //if($('.btn-course-signup').text() == 'Enrolled')
+              $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+
             web3.eth.filter(option).stopWatching();
           }
           else
@@ -207,6 +220,8 @@ App = {
           }
         });
         //******
+
+            console.log($('.btn-course-signup').text());
 
         return _instance.Signup(courseId, {from: account, value: costInEth * 1000000000000000000});
         //return _instance.Signup(courseId, {from: account});
