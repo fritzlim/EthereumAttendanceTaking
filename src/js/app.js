@@ -148,7 +148,9 @@ App = {
     var courseId = String($(event.target).data('course-id'));
     console.log("[handleSignup()] courseId=" + courseId);
 
+    $('#loader').attr("src", "https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif");
     $('.btn-course-signup[data-course-id=' + courseId + ']').text('Awaiting payment').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+
     $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
 
     //var adoptionInstance;
@@ -170,13 +172,12 @@ App = {
         {
           if (!error)
           {
-            // No error
+            $("#loader").hide();
             console.log("[handleSignup()] CourseSignupSuccessful() event fired. No error");
           }
 
           else
           {
-            // Error
             console.log("[handleSignup()] CourseSignupSuccessful() error=" + error);
           }
         });
@@ -242,6 +243,7 @@ App = {
 
 $(function() {
   $(window).on('load', function() {
+    //$('#loader').hide();
     App.init();
   });
 });
