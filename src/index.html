@@ -58,7 +58,7 @@
               <li>&nbsp;</li>
               <li>This course is suitable for beginners without any technical knowledge.</li>
             </ul>
-            <button type='button' class='btn btn-lg btn-block btn-outline-primary btn-course-signup' data-course-id='intro-to-blockchain'><img id='loader' height='30px' src='' />Sign up for free</button>
+            <button type='button' class='btn btn-lg btn-block btn-outline-primary btn-course-signup' data-course-id='intro-to-blockchain' data-toggle="modal" data-target="#login-modal"><img id='loader' height='30px' src='' />Sign up for free</button>
           </div>
         </div>
         <div class="card mb-4 shadow-sm">
@@ -92,6 +92,28 @@
       </div>
     </div>
     <!-- End of Pricing example code adapted from Bootstrap -->
+
+
+    <!-- Bootstrap modal -->
+    <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+          <div class="loginmodal-container">
+            <h1>Login to Your Account</h1><br>
+            <form id='submit'>
+              <input type="text" name="user" placeholder="Username">
+              <input type="password" name="pass" placeholder="Password">
+              <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+              <button type='button' class='btn btn-lg btn-block btn-outline-primary btn-course-signup btn-login'>Login</button>
+            </form>
+            <div class="login-help">
+              <a href="#">Register</a> - <a href="#">Forgot Password</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- End of Bootstrap modal -->
+
 
 
     <div class="container">

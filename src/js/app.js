@@ -89,7 +89,8 @@ App = {
     $(document).on('click', '.btn-adopt', App.handleAdopt);
     //******
 
-    $(document).on('click', '.btn-course-signup', App.handleSignup);
+    //$(document).on('click', '.btn-course-signup', App.handleSignup);
+    $(document).on('click', '.btn-login', App.handleSignup);
   },
 
   markAdopted: function(adopters, account) {
