@@ -6,7 +6,8 @@ contract SignupAndAttendance
 	{
 		//bytes32 courseId;
 		bytes32 name;
-		string[] signups; 
+		string[] signups;
+		string[] coursesCompleted;
 	}
 
 	mapping (address => uint) public balances;
@@ -44,6 +45,12 @@ contract SignupAndAttendance
 
 	  //Return the total number of courses signed up for by the attendee.
 	  //return attendees[msg.sender].signups.push(courseId) - 1;
+	}
+
+	function AttendanceTaking(string _courseCompletedId) view public
+	{
+		Attendee storage attendee = attendees[msg.sender];
+		attendee.coursesCompleted.push(_courseCompletedId);
 	}
 
 	// function EmitCourseSignupSucessful(_courseId)

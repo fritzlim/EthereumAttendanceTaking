@@ -91,6 +91,8 @@ App = {
 
     $(document).on('click', '.btn-course-signup', App.handleSignup);
     //$(document).on('click', '.btn-login', App.handleSignup);
+
+    $(document).on('click', '.btn-attendance-submit', App.handleAttendanceTaking);
   },
 
   markAdopted: function(adopters, account) {
@@ -144,9 +146,12 @@ App = {
 
     event.preventDefault();
 
-    console.log('[handleSignup()] ' + 'course-id=' + this.getAttribute('data-course-id')); //https://stackoverflow.com/questions/33760520/get-data-attributes-in-javascript-code#_=_
+    var courseId = String(this.getAttribute('data-course-id')); ////https://stackoverflow.com/questions/33760520/get-data-attributes-in-javascript-code#_=_
 
-    var courseId = String($(event.target).data('course-id'));
+    console.log('[handleSignup()] ' + 'course-id=' + courseId);
+
+    //var courseId = String($(event.target).data('course-id'));
+
     console.log("[handleSignup()] courseId=" + courseId);
 
     $('.btn-course-signup[data-course-id=' + courseId + ']').text('Awaiting payment').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
@@ -211,23 +216,69 @@ App = {
             if($('.btn-course-signup').text() != 'Enrolled') //http://api.jquery.com/text/
               $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
 
-          else //if($('.btn-course-signup').text() == 'Enrolled')
+            else //if($('.btn-course-signup').text() == 'Enrolled')
               $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
 
-            web3.eth.filter(option).stopWatching();
+            //web3.eth.filter(option).stopWatching();
           }
           else
           {
             console.log('[handleSignup()] latest block error=' + error);
-            web3.eth.filter(option).stopWatching();
+            //web3.eth.filter(option).stopWatching();
           }
+
+          web3.eth.filter(option).stopWatching();
         });
         //******
 
-            console.log($('.btn-course-signup').text());
+        console.log($('.btn-course-signup').text());
 
         return _instance.Signup(courseId, {from: account, value: costInEth * 1000000000000000000});
         //return _instance.Signup(courseId, {from: account});
+      });
+    });
+  },
+
+  handleAttendanceTaking: function(event)
+  {
+    console.log('[handleAttendanceTaking()]');
+    event.preventDefault();
+
+    var courseCompletedId = '';
+
+    var buttonId = this.getAttribute('data-button-id'); //https://stackoverflow.com/questions/33760520/get-data-attributes-in-javascript-code#_=_
+    console.log('[handleAttendanceTaking()] ' + 'button-id=' + buttonId);
+  
+    switch(buttonId)
+    {
+      case 'intro-to-blockchain-attendance':
+        if($('#' + buttonId + '-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
+          courseCompletedId = buttonId.split('-attendance')[0]; //https://www.w3schools.com/jsref/jsref_split.asp
+        break;
+      
+      case 'solidity-101-attendance':
+        if($('#' + buttonId +'-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
+          courseCompletedId = buttonId.split('-attendance')[0]; //https://www.w3schools.com/jsref/jsref_split.asp
+        break;
+
+      case 'solidity-102-attendance':
+        if($('#' + buttonId +'-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
+          courseCompletedId = buttonId.split('-attendance')[0]; //https://www.w3schools.com/jsref/jsref_split.asp
+        break;
+    }
+
+    console.log('[handleAttendanceTaking()] courseCompletedId=' + courseCompletedId);
+
+    web3.eth.getAccounts(function(error, accounts) {
+      if (error) {
+        console.log(error);
+      }
+
+      var account = accounts[0];
+
+      App.contracts.SignupAndAttendance.deployed().then(function(_instance)
+      {
+        _instance.AttendanceTaking(courseCompletedId);
       });
     });
   }
