@@ -89,8 +89,8 @@ App = {
     $(document).on('click', '.btn-adopt', App.handleAdopt);
     //******
 
-    //$(document).on('click', '.btn-course-signup', App.handleSignup);
-    $(document).on('click', '.btn-login', App.handleSignup);
+    $(document).on('click', '.btn-course-signup', App.handleSignup);
+    //$(document).on('click', '.btn-login', App.handleSignup);
   },
 
   markAdopted: function(adopters, account) {
@@ -149,8 +149,8 @@ App = {
     var courseId = String($(event.target).data('course-id'));
     console.log("[handleSignup()] courseId=" + courseId);
 
-    $('#loader').attr("src", "https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif");
     $('.btn-course-signup[data-course-id=' + courseId + ']').text('Awaiting payment').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+    $('.btn-course-signup[data-course-id=' + courseId + ']').append("<img id='loader-1' height='30px' src='https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif'>");
 
     $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
 
@@ -173,7 +173,7 @@ App = {
         {
           if (!error)
           {
-            $("#loader").hide();
+            //$("#loader").hide();
             console.log("[handleSignup()] CourseSignupSuccessful() event fired. No error");
           }
 
@@ -203,6 +203,7 @@ App = {
           {
             console.log('[handleSignup()] courseId=' + courseId + ', ' + option + ' block result=' + result);
             $('.btn-course-signup[data-course-id=' + courseId + ']').text('Enrolled').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+            $('#loader-1').attr('src','');
 
                        //if($('.btn-course-signup[data-course-id!=' + courseId + ']').text() != 'Enrolled')
             //$('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
