@@ -253,17 +253,41 @@ App = {
     {
       case 'intro-to-blockchain-attendance':
         if($('#' + buttonId + '-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
+        {
           courseCompletedId = buttonId.split('-attendance')[0]; //https://www.w3schools.com/jsref/jsref_split.asp
+          
+          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').text('Course Completed').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').text('Course Completed').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          
+          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
+        }
         break;
       
       case 'solidity-101-attendance':
         if($('#' + buttonId +'-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
+        {
           courseCompletedId = buttonId.split('-attendance')[0]; //https://www.w3schools.com/jsref/jsref_split.asp
+          
+          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').text('Course Completed').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').text('Course Completed').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          
+          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
+        }
         break;
 
       case 'solidity-102-attendance':
         if($('#' + buttonId +'-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
+        {
           courseCompletedId = buttonId.split('-attendance')[0]; //https://www.w3schools.com/jsref/jsref_split.asp
+          
+          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').text('Course Completed').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').text('Course Completed').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+        
+          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
+        }
         break;
     }
 
