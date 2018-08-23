@@ -178,7 +178,6 @@ App = {
         {
           if (!error)
           {
-            //$("#loader").hide();
             console.log("[handleSignup()] CourseSignupSuccessful() event fired. No error");
           }
 
@@ -209,6 +208,9 @@ App = {
             console.log('[handleSignup()] courseId=' + courseId + ', ' + option + ' block result=' + result);
             $('.btn-course-signup[data-course-id=' + courseId + ']').text('Enrolled').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
             $('#loader-1').attr('src','');
+
+            $('.btn-attendance-submit[data-button-id=' + courseId + '-attendance]').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+            $('.' + courseId + '-attendance-checkbox').attr('disabled', false); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
 
                        //if($('.btn-course-signup[data-course-id!=' + courseId + ']').text() != 'Enrolled')
             //$('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
@@ -249,16 +251,18 @@ App = {
     var buttonId = this.getAttribute('data-button-id'); //https://stackoverflow.com/questions/33760520/get-data-attributes-in-javascript-code#_=_
     console.log('[handleAttendanceTaking()] ' + 'button-id=' + buttonId);
   
+    courseCompletedId = buttonId.split('-attendance')[0]; //https://www.w3schools.com/jsref/jsref_split.asp
+
     switch(buttonId)
     {
       case 'intro-to-blockchain-attendance':
         if($('#' + buttonId + '-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
         {
-          courseCompletedId = buttonId.split('-attendance')[0]; //https://www.w3schools.com/jsref/jsref_split.asp
-          
-          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').text('Course Completed').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').text('Course Completed').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-          
+          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now()) + '</span>').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now())).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+
+          $('.' + courseCompletedId + '-attendance-checkbox').attr('disabled', true); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
+
           $('.btn-attendance-submit[data-button-id=' + buttonId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
           $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
         }
@@ -267,11 +271,11 @@ App = {
       case 'solidity-101-attendance':
         if($('#' + buttonId +'-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
         {
-          courseCompletedId = buttonId.split('-attendance')[0]; //https://www.w3schools.com/jsref/jsref_split.asp
+          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now()) + '</span>').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now())).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
           
-          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').text('Course Completed').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').text('Course Completed').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-          
+          $('.' + courseCompletedId + '-attendance-checkbox').attr('disabled', true); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
+
           $('.btn-attendance-submit[data-button-id=' + buttonId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
           $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
         }
@@ -280,11 +284,11 @@ App = {
       case 'solidity-102-attendance':
         if($('#' + buttonId +'-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
         {
-          courseCompletedId = buttonId.split('-attendance')[0]; //https://www.w3schools.com/jsref/jsref_split.asp
-          
-          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').text('Course Completed').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').text('Course Completed').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now()) + '</span>').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now())).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
         
+          $('.' + courseCompletedId + '-attendance-checkbox').attr('disabled', true); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
+
           $('.btn-attendance-submit[data-button-id=' + buttonId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
           $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
         }
@@ -322,5 +326,17 @@ $(function() {
   $(window).on('load', function() {
     //$('#loader').hide();
     App.init();
+
+    //Disable all attendance-taking checkboxes
+    //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
+    $('.intro-to-blockchain-attendance-checkbox').attr('disabled', true);
+    $('.solidity-101-attendance-checkbox').attr('disabled', true);
+    $('.solidity-102-attendance-checkbox').attr('disabled', true);
+
+    //Disable all attendance-submission buttons
+    //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+    $('.btn-attendance-submit[data-button-id="intro-to-blockchain-attendance"]').attr('disabled', true);
+    $('.btn-attendance-submit[data-button-id="solidity-101-attendance"]').attr('disabled', true);
+    $('.btn-attendance-submit[data-button-id="solidity-102-attendance"]').attr('disabled', true);
   });
 });
