@@ -90,7 +90,7 @@ App = {
     //******
 
     $(document).on('click', '.btn-course-signup', App.handleSignup);
-    //$(document).on('click', '.btn-login', App.handleSignup);
+    $(document).on('click', '.btn-login', App.handleStudentLogin);
 
     $(document).on('click', '.btn-attendance-submit', App.handleAttendanceTaking);
   },
@@ -138,6 +138,16 @@ App = {
         console.log(err.message);
       });
     });
+  },
+
+  handleStudentLogin: function(event)
+  {
+    console.log("[handleStudentLogin()]");
+
+    event.preventDefault();
+
+    $('.btn-login').attr('disabled', true);
+    $('.btn-course-signup').attr('disabled', false);
   },
 
   handleSignup: function(event)
@@ -327,16 +337,19 @@ $(function() {
     //$('#loader').hide();
     App.init();
 
-    //Disable all attendance-taking checkboxes
-    //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
-    $('.intro-to-blockchain-attendance-checkbox').attr('disabled', true);
-    $('.solidity-101-attendance-checkbox').attr('disabled', true);
-    $('.solidity-102-attendance-checkbox').attr('disabled', true);
+    //Disable all course sign up buttons
+    $('.btn-course-signup').attr('disabled', true);
 
     //Disable all attendance-submission buttons
     //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
     $('.btn-attendance-submit[data-button-id="intro-to-blockchain-attendance"]').attr('disabled', true);
     $('.btn-attendance-submit[data-button-id="solidity-101-attendance"]').attr('disabled', true);
     $('.btn-attendance-submit[data-button-id="solidity-102-attendance"]').attr('disabled', true);
+
+    //Disable all attendance-taking checkboxes
+    //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
+    $('.intro-to-blockchain-attendance-checkbox').attr('disabled', true);
+    $('.solidity-101-attendance-checkbox').attr('disabled', true);
+    $('.solidity-102-attendance-checkbox').attr('disabled', true);
   });
 });
