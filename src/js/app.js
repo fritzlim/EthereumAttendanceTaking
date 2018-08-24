@@ -148,6 +148,42 @@ App = {
 
     $('.btn-login').attr('disabled', true);
     $('.btn-course-signup').attr('disabled', false);
+
+    var studentName = '';
+    var studentEmail ='';
+
+    web3.eth.getAccounts(function(error, accounts)
+    {
+      if (error)
+      {
+        console.log(error);
+      }
+
+      var account = accounts[0];
+
+      App.contracts.SignupAndAttendance.deployed().then(function(_instance)
+      {
+        //****** https://gist.github.com/robertsimoes/4523a225801739e63b3feb5446f7c6e3
+        // And https://www.google.com/search?client=ubuntu&channel=fs&q=solidity+watch&ie=utf-8&oe=utf-8
+        // And https://programtheblockchain.com/posts/2018/01/24/logging-and-watching-solidity-events/
+
+        _instance.StudentLoginSuccessful(studentName).watch(function(error, result)
+        {
+          if (!error)
+          {
+            console.log("[handleStudentLogin()] StudentLoginSuccessful() event fired. No error");
+          }
+
+          else
+          {
+            console.log("[handleStudentLogin()] StudentLoginSuccessful() error=" + error);
+          }
+        });
+        //******
+
+        return _instance.StudentLogin(msg.sender, studentName, studentEmail, {from: account});
+      });
+    });
   },
 
   handleSignup: function(event)

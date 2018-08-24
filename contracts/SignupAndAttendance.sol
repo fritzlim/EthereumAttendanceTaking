@@ -16,22 +16,37 @@ contract Owned
 
 contract SignupAndAttendance is Owned
 {
-	struct Attendee
+	struct Student
 	{
 		//bytes32 courseId;
 		bytes32 name;
+		bytes32 email;
 		string[] signups;
 		string[] coursesCompleted;
 	}
 
 	mapping (address => uint) public balances;
-	mapping (address => Attendee) public attendees;
+	mapping (address => Student) public students;
 
+	address[] public studentAccounts;
+
+	event StudentLoginSuccessful(bytes32 _name);
 	event CourseSignupSuccessful(string _courseId);
 
 	constructor() public 
 	{
 
+	}
+
+	function StudentLogin(address _address, bytes32 _name, bytes32 _email) onlyOwner payable public
+	{
+		var student = students[_address];
+
+		student.name = _name;
+		student.email = _email;
+
+		studentAccounts.push(_address);
+		emit StudentLoginSuccessful(_name);
 	}
 
 	function Signup(string _courseId) onlyOwner payable public
@@ -52,8 +67,8 @@ contract SignupAndAttendance is Owned
 			balances[msg.sender] += msg.value;
 	  	}
 
-	  	Attendee storage attendee = attendees[msg.sender];
-		attendee.signups.push(_courseId);
+	  	Student storage student = students[msg.sender];
+		student.signups.push(_courseId);
 
 		emit CourseSignupSuccessful(_courseId);
 
@@ -63,8 +78,8 @@ contract SignupAndAttendance is Owned
 
 	function AttendanceTaking(string _courseCompletedId) onlyOwner view public
 	{
-		Attendee storage attendee = attendees[msg.sender];
-		attendee.coursesCompleted.push(_courseCompletedId);
+		Student storage student = students[msg.sender];
+		student.coursesCompleted.push(_courseCompletedId);
 	}
 
 	// function EmitCourseSignupSucessful(_courseId)
