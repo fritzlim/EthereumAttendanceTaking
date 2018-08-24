@@ -48,14 +48,11 @@ contract SignupAndAttendance is Owned
 		student.email = _email;
 		student.loginDate = _date;
 
-		require(msg.value == 0 ether);
-		balances[msg.sender] += msg.value;
-
-		studentAccounts.push(_address);
 		emit StudentLoginEvent(_name);
+		studentAccounts.push(_address);
 	}
 
-	function Signup(string _courseId) onlyOwner payable public
+	function Signup(string _courseId, string _date) onlyOwner payable public
 	{
 		//require(courseId >= 0 && courseId <= 2);
 		//bytes32 memory temp = "intro-to-blockchain";
@@ -74,7 +71,7 @@ contract SignupAndAttendance is Owned
 	  	}
 
 	  	Student storage student = students[msg.sender];
-		student.signups.push(_courseId);
+		student.signups.push(_date + ':' + _courseId);
 
 		emit CourseSignupEvent(_courseId);
 
@@ -82,10 +79,10 @@ contract SignupAndAttendance is Owned
 	  //return attendees[msg.sender].signups.push(courseId) - 1;
 	}
 
-	function AttendanceTaking(string _courseCompletedId) onlyOwner view public
+	function AttendanceTaking(string _courseCompletedId, string _date) onlyOwner public
 	{
 		Student storage student = students[msg.sender];
-		student.coursesCompleted.push(_courseCompletedId);
+		student.coursesCompleted.push(_date + ':' + _courseCompletedId);
 	}
 
 	// function EmitCourseSignupSucessful(_courseId)
