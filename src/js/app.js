@@ -347,40 +347,22 @@ App = {
         {
           $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').text('Awaiting transaction').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
           $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').append("<img id='loader-1' height='30px' src='https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif'>");
-
-          // $('.btn-attendance-submit[data-button-id=' + buttonId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + date + '</span>').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-          // $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').append('<br /><br />Course Completed<br /><span style="font-size:10px">on ' + date).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
-
-          // $('.' + courseCompletedId + '-attendance-checkbox').attr('disabled', true); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
-
-          // $('.btn-attendance-submit[data-button-id=' + buttonId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
-          // $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
         }
         break;
       
       case 'solidity-101-attendance':
         if($('#' + buttonId +'-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
         {
-          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + date + '</span>').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').append('<br /><br />Course Completed<br /><span style="font-size:10px">on ' + date).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
-
-          $('.' + courseCompletedId + '-attendance-checkbox').attr('disabled', true); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
-
-          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
-          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
+          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').text('Awaiting transaction').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
+          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').append("<img id='loader-1' height='30px' src='https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif'>");
         }
         break;
 
       case 'solidity-102-attendance':
         if($('#' + buttonId +'-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
         {
-          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + date + '</span>').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').append('<br /><br />Course Completed<br /><span style="font-size:10px">on ' + date).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
-
-          $('.' + courseCompletedId + '-attendance-checkbox').attr('disabled', true); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
-
-          $('.btn-attendance-submit[data-button-id=' + buttonId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
-          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
+          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').text('Awaiting transaction').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
+          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').append("<img id='loader-1' height='30px' src='https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif'>");
         }
         break;
     }
@@ -394,35 +376,38 @@ App = {
         console.log(error);
       }
 
-             //****** https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethfilter
-        //And https://ethereum.stackexchange.com/questions/9636/whats-the-proper-way-to-wait-for-a-transaction-to-be-mined-and-get-the-results
-        
-        var option = 'pending';
-        var date = '';
+      //****** https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethfilter
+      //And https://ethereum.stackexchange.com/questions/9636/whats-the-proper-way-to-wait-for-a-transaction-to-be-mined-and-get-the-results
+      
+      var option = 'pending';
+      var date = '';
 
-        web3.eth.filter(option, function(error, result)
-        //web3.eth.filter(option).watch(function(error, result)
+      web3.eth.filter(option, function(error, result)
+      //web3.eth.filter(option).watch(function(error, result)
+      {
+        if (!error)
         {
-          if (!error)
-          {
-            console.log('[handleAttendanceTaking()] courseCompletedId=' + courseCompletedId + ', ' + option + ' block result=' + result);
-            
-            date = new Date(Date.now());
+          console.log('[handleAttendanceTaking()] courseCompletedId=' + courseCompletedId + ', ' + option + ' block result=' + result);
+          
+          date = new Date(Date.now());
 
-            $('.btn-attendance-submit[data-button-id=' + courseCompletedId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + date).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-            $('#loader-1').attr('src','');
+          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').html('Course Completed<br /><span style="font-size:10px">on ' + date).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
 
-            $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-            $('.' + courseCompletedId + '-attendance-checkbox').attr('disabled', false); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
-          }
-          else
-          {
-            console.log('[handleAttendanceTaking()] ' + option + ' block error=' + error);
-          }
+          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          $('.' + courseCompletedId + '-attendance-checkbox').attr('disabled', true); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
+        
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').append('<br /><br />Course Completed<br /><span style="font-size:10px">on ' + date).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
+        }
+        else
+        {
+          console.log('[handleAttendanceTaking()] ' + option + ' block error=' + error);
+        }
 
-          web3.eth.filter(option).stopWatching();
-        });
-        //******
+        web3.eth.filter(option).stopWatching();
+      });
+      //******
 
       var account = accounts[0];
 
