@@ -30,23 +30,27 @@ contract SignupAndAttendance is Owned
 
 	address[] public studentAccounts;
 
-	event StudentLoginSuccessful(bytes32 _name);
-	event CourseSignupSuccessful(string _courseId);
+	event StudentLoginEvent(bytes32 _name);
+	event CourseSignupEvent(string _courseId);
 
 	constructor() public 
 	{
 
 	}
 
-	function StudentLogin(address _address, bytes32 _name, bytes32 _email) onlyOwner payable public
+	function StudentLogin(bytes32 _name, bytes32 _email) public
 	{
+		var _address = msg.sender;
 		var student = students[_address];
 
 		student.name = _name;
 		student.email = _email;
 
+		require(msg.value == 0 ether);
+		balances[msg.sender] += msg.value;
+
 		studentAccounts.push(_address);
-		emit StudentLoginSuccessful(_name);
+		emit StudentLoginEvent(_name);
 	}
 
 	function Signup(string _courseId) onlyOwner payable public
@@ -70,7 +74,7 @@ contract SignupAndAttendance is Owned
 	  	Student storage student = students[msg.sender];
 		student.signups.push(_courseId);
 
-		emit CourseSignupSuccessful(_courseId);
+		emit CourseSignupEvent(_courseId);
 
 	  //Return the total number of courses signed up for by the attendee.
 	  //return attendees[msg.sender].signups.push(courseId) - 1;

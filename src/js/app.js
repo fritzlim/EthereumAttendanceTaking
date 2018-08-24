@@ -148,9 +148,13 @@ App = {
 
     $('.btn-login').attr('disabled', true);
     $('.btn-course-signup').attr('disabled', false);
+    $('.btn-login').append("<img id='loader-1' height='30px' src='https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif'>");
 
-    var studentName = '';
-    var studentEmail ='';
+    console.log('[handleStudentLogin()] studentName=' + $('#student-name').val());
+    console.log('[handleStudentLogin()] studentEmail=' + $('#student-email').val());
+
+    var studentName = $('#student-name').val();
+    var studentEmail = $('#student-email').val();
 
     web3.eth.getAccounts(function(error, accounts)
     {
@@ -167,21 +171,46 @@ App = {
         // And https://www.google.com/search?client=ubuntu&channel=fs&q=solidity+watch&ie=utf-8&oe=utf-8
         // And https://programtheblockchain.com/posts/2018/01/24/logging-and-watching-solidity-events/
 
-        _instance.StudentLoginSuccessful(studentName).watch(function(error, result)
+        _instance.StudentLoginEvent(studentName).watch(function(error, result)
         {
           if (!error)
           {
-            console.log("[handleStudentLogin()] StudentLoginSuccessful() event fired. No error");
+            console.log("[handleStudentLogin()] StudentLoginEvent() event fired. No error");
           }
 
           else
           {
-            console.log("[handleStudentLogin()] StudentLoginSuccessful() error=" + error);
+            console.log("[handleStudentLogin()] StudentLoginEvent() error=" + error);
           }
         });
         //******
 
-        return _instance.StudentLogin(msg.sender, studentName, studentEmail, {from: account});
+        //****** https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethfilter
+        //And https://ethereum.stackexchange.com/questions/9636/whats-the-proper-way-to-wait-for-a-transaction-to-be-mined-and-get-the-results
+        
+        var option = 'pending';
+
+        web3.eth.filter(option, function(error, result)
+        //web3.eth.filter(option).watch(function(error, result)
+        {
+          if (!error)
+          {
+            console.log('[handleStudentLogin()] courseId=' + option + ' block result=' + result);
+            $('.btn-login').html('Logged In<br /><span style="font-size:10px">on ' + new Date(Date.now())).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+            $('.btn-login').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
+
+            //$('#loader-1').attr('src','');
+          }
+          else
+          {
+            console.log('[handleStudentLogin()] ' + option + ' block error=' + error);
+          }
+
+          web3.eth.filter(option).stopWatching();
+        });
+        //******
+
+        return _instance.StudentLogin(studentName, studentEmail, {from: account});
       });
     });
   },
@@ -200,7 +229,7 @@ App = {
 
     console.log("[handleSignup()] courseId=" + courseId);
 
-    $('.btn-course-signup[data-course-id=' + courseId + ']').text('Awaiting payment').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+    $('.btn-course-signup[data-course-id=' + courseId + ']').text('Awaiting transaction').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
     $('.btn-course-signup[data-course-id=' + courseId + ']').append("<img id='loader-1' height='30px' src='https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif'>");
 
     $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
@@ -220,16 +249,16 @@ App = {
         // And https://www.google.com/search?client=ubuntu&channel=fs&q=solidity+watch&ie=utf-8&oe=utf-8
         // And https://programtheblockchain.com/posts/2018/01/24/logging-and-watching-solidity-events/
 
-        _instance.CourseSignupSuccessful(courseId).watch(function(error, result)
+        _instance.CourseSignupEvent(courseId).watch(function(error, result)
         {
           if (!error)
           {
-            console.log("[handleSignup()] CourseSignupSuccessful() event fired. No error");
+            console.log("[handleSignup()] CourseSignupEvent() event fired. No error");
           }
 
           else
           {
-            console.log("[handleSignup()] CourseSignupSuccessful() error=" + error);
+            console.log("[handleSignup()] CourseSignupEvent() error=" + error);
           }
         });
         //******
@@ -272,7 +301,7 @@ App = {
           }
           else
           {
-            console.log('[handleSignup()] latest block error=' + error);
+            console.log('[handleSignup()] ' + option + ' block error=' + error);
             //web3.eth.filter(option).stopWatching();
           }
 
