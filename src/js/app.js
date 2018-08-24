@@ -150,11 +150,11 @@ App = {
     $('.btn-course-signup').attr('disabled', false);
     $('.btn-login').append("<img id='loader-1' height='30px' src='https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif'>");
 
-    console.log('[handleStudentLogin()] studentName=' + $('#student-name').val());
-    console.log('[handleStudentLogin()] studentEmail=' + $('#student-email').val());
+    var studentName = $('#student-name-input').val();
+    var studentEmail = $('#student-email-input').val();
 
-    var studentName = $('#student-name').val();
-    var studentEmail = $('#student-email').val();
+    console.log('[handleStudentLogin()] studentName=' + studentName);
+    console.log('[handleStudentLogin()] studentEmail=' + studentEmail);
 
     web3.eth.getAccounts(function(error, accounts)
     {
@@ -189,6 +189,7 @@ App = {
         //And https://ethereum.stackexchange.com/questions/9636/whats-the-proper-way-to-wait-for-a-transaction-to-be-mined-and-get-the-results
         
         var option = 'pending';
+        var date = '';
 
         web3.eth.filter(option, function(error, result)
         //web3.eth.filter(option).watch(function(error, result)
@@ -196,10 +197,13 @@ App = {
           if (!error)
           {
             console.log('[handleStudentLogin()] courseId=' + option + ' block result=' + result);
-            $('.btn-login').html('Logged In<br /><span style="font-size:10px">on ' + new Date(Date.now())).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+
+            date = new Date(Date.now());
+            $('.btn-login').html('Logged In<br /><span style="font-size:10px">on ' + date).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
             $('.btn-login').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
 
-            //$('#loader-1').attr('src','');
+            $('#student-name-input').attr('disabled', true);
+            $('#student-email-input').attr('disabled', true);
           }
           else
           {
@@ -210,7 +214,7 @@ App = {
         });
         //******
 
-        return _instance.StudentLogin(studentName, studentEmail, {from: account});
+        return _instance.StudentLogin(studentName, studentEmail, date, {from: account});
       });
     });
   },

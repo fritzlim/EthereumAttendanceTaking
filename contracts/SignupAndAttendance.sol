@@ -21,6 +21,7 @@ contract SignupAndAttendance is Owned
 		//bytes32 courseId;
 		bytes32 name;
 		bytes32 email;
+		string loginDate;
 		string[] signups;
 		string[] coursesCompleted;
 	}
@@ -38,13 +39,14 @@ contract SignupAndAttendance is Owned
 
 	}
 
-	function StudentLogin(bytes32 _name, bytes32 _email) public
+	function StudentLogin(bytes32 _name, bytes32 _email, string _date) public
 	{
 		var _address = msg.sender;
 		var student = students[_address];
 
 		student.name = _name;
 		student.email = _email;
+		student.loginDate = _date;
 
 		require(msg.value == 0 ether);
 		balances[msg.sender] += msg.value;
