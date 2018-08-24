@@ -270,7 +270,7 @@ App = {
         if($('#' + buttonId + '-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
         {
           $('.btn-attendance-submit[data-button-id=' + buttonId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now()) + '</span>').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').append('<br /><br />Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now())).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').append('<br /><br />Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now())).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
 
           $('.' + courseCompletedId + '-attendance-checkbox').attr('disabled', true); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
 
@@ -283,7 +283,7 @@ App = {
         if($('#' + buttonId +'-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
         {
           $('.btn-attendance-submit[data-button-id=' + buttonId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now()) + '</span>').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').append('<br /><br />Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now())).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').append('<br /><br />Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now())).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
 
           $('.' + courseCompletedId + '-attendance-checkbox').attr('disabled', true); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
 
@@ -296,7 +296,7 @@ App = {
         if($('#' + buttonId +'-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
         {
           $('.btn-attendance-submit[data-button-id=' + buttonId + ']').html('Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now()) + '</span>').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').append('<br /><br />Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now())).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').append('<br /><br />Course Completed<br /><span style="font-size:10px">on ' + new Date(Date.now())).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
 
           $('.' + courseCompletedId + '-attendance-checkbox').attr('disabled', true); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
 
