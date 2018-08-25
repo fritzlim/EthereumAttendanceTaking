@@ -295,7 +295,10 @@ App = {
             date = new Date(Date.now());
 
             $('.btn-course-signup[data-course-id=' + courseId + ']').html('Enrolled<br /><span style="font-size:10px">on ' + date).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
-            //$('#loader-1').attr('src','');
+            
+            //****** This isn't working ******/
+            $('.btn-course-signup[data-course-id=' + courseId + ']').addClass('enrolled-course'); //https://www.w3schools.com/jquery/jquery_css_classes.asp
+            //********************************/
 
             $('.btn-attendance-submit[data-button-id=' + courseId + '-attendance]').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
             $('.' + courseId + '-attendance-checkbox').attr('disabled', false); //https://stackoverflow.com/questions/30826769/how-to-disable-checkbox-with-jquery
@@ -303,11 +306,26 @@ App = {
                        //if($('.btn-course-signup[data-course-id!=' + courseId + ']').text() != 'Enrolled')
             //$('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
 
-            if($('.btn-course-signup').text() != 'Enrolled') //http://api.jquery.com/text/
-              $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
 
-            else //if($('.btn-course-signup').text() == 'Enrolled')
-              $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+
+            //if($('.btn-course-signup').text() != 'Enrolled') //http://api.jquery.com/text/
+            //  $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+
+            //else //if($('.btn-course-signup').text() == 'Enrolled')
+
+            //****** This isn't working ******/
+            if(!$('.btn-course-signup').hasClass('enrolled-course'))
+              $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+            //********************************/
+
+            $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+            
+            //$('.enrolled-course').attr('disabled', true);
+            //if(!$('.btn-course-signup').hasClass('enrolled-course'))
+            //  $('.btn-course-signup').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables            
+
+            //if($('.btn-course-signup').text() != 'Enrolled') //http://api.jquery.com/text/
+            //  $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables            
           }
           else
           {
