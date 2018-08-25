@@ -148,6 +148,8 @@ App = {
 
     $('.btn-login').attr('disabled', true);
     $('.btn-course-signup').attr('disabled', false);
+
+    $('.btn-login').html('Please confirm the transaction<br />on MetaMask').css('font-size', '98%').attr('disabled', true);
     $('.btn-login').append("<img id='loader-1' height='30px' src='https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif'>");
 
     var studentName = $('#student-name-input').val();
@@ -234,7 +236,7 @@ App = {
 
     console.log("[handleSignup()] courseId=" + courseId);
 
-    $('.btn-course-signup[data-course-id=' + courseId + ']').text('Awaiting transaction').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+    $('.btn-course-signup[data-course-id=' + courseId + ']').text('Please confirm the transaction<br />on MetaMask').attr('disabled', true).css('font-size', '98%'); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
     $('.btn-course-signup[data-course-id=' + courseId + ']').append("<img id='loader-1' height='30px' src='https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif'>");
 
     $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
@@ -345,7 +347,7 @@ App = {
       case 'intro-to-blockchain-attendance':
         if($('#' + buttonId + '-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
         {
-          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').text('Awaiting transaction').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
+          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').text('Confirm the transaction').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
           $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').append("<img id='loader-1' height='30px' src='https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif'>");
         }
         break;
@@ -353,7 +355,7 @@ App = {
       case 'solidity-101-attendance':
         if($('#' + buttonId +'-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
         {
-          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').text('Awaiting transaction').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
+          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').text('Confirm the transaction').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
           $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').append("<img id='loader-1' height='30px' src='https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif'>");
         }
         break;
@@ -361,7 +363,7 @@ App = {
       case 'solidity-102-attendance':
         if($('#' + buttonId +'-checkbox-1')[0].checked && $('#' + buttonId + '-checkbox-2')[0].checked)
         {
-          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').text('Awaiting transaction').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
+          $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').text('Confirm the transaction').attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
           $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').append("<img id='loader-1' height='30px' src='https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif'>");
         }
         break;
