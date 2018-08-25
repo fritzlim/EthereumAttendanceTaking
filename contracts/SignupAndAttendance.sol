@@ -21,9 +21,9 @@ contract SignupAndAttendance is Owned
 		//bytes32 courseId;
 		bytes32 name;
 		bytes32 email;
-		string[] loginDate;
-		string[] signups;
-		string[] coursesCompleted;
+		string[] loginRecord;
+		string[] signupRecord;
+		string[] coursesCompletedRecord;
 	}
 
 	mapping (address => uint) public balances;
@@ -31,25 +31,27 @@ contract SignupAndAttendance is Owned
 
 	address[] public studentAccounts;
 
-	event StudentLoginEvent(bytes32 studentName, bytes32 studentEmail);
-	event CourseSignupEvent(string courseData);
+	event StudentLoginEvent(string loginRecord);
+	event SignupEvent(string courseData);
+	event AttendanceTakingEvent(string courseData);
 
 	constructor() public 
 	{
 
 	}
 
-	function StudentLogin(bytes32 _name, bytes32 _email, string _date) public
+	function StudentLogin(bytes32 _name, bytes32 _email, string _loginRecord) public
 	{
 		var _address = msg.sender;
-		var student = students[_address];
+		Student storage student = students[_address];
 
 		student.name = _name;
 		student.email = _email;
-		student.loginDate.push(_date);
+		student.loginRecord.push(_loginRecord);
 
-		emit StudentLoginEvent(_name, _email);
 		studentAccounts.push(_address);
+
+		emit StudentLoginEvent(_loginRecord);
 	}
 
 	function Signup(string _courseId, string _courseData) onlyOwner payable public
@@ -71,9 +73,9 @@ contract SignupAndAttendance is Owned
 	  	}
 
 	  	Student storage student = students[msg.sender];
-		student.signups.push(_courseData);
+		student.signupRecord.push(_courseData);
 
-		emit CourseSignupEvent(_courseData);
+		emit SignupEvent(_courseData);
 
 	  //Return the total number of courses signed up for by the attendee.
 	  //return attendees[msg.sender].signups.push(courseId) - 1;
@@ -82,7 +84,9 @@ contract SignupAndAttendance is Owned
 	function AttendanceTaking(string _courseData) onlyOwner public
 	{
 		Student storage student = students[msg.sender];
-		student.coursesCompleted.push(_courseData);
+		student.coursesCompletedRecord.push(_courseData);
+
+		emit AttendanceTakingEvent(_courseData);
 	}
 
 	// function EmitCourseSignupSucessful(_courseId)

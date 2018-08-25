@@ -166,6 +166,8 @@ App = {
       }
 
       var account = accounts[0];
+      var date = new Date(Date.now());
+      var studentLoginRecord = date + ':' + studentName + ',' + studentEmail;
 
       App.contracts.SignupAndAttendance.deployed().then(function(_instance)
       {
@@ -173,11 +175,11 @@ App = {
         // And https://www.google.com/search?client=ubuntu&channel=fs&q=solidity+watch&ie=utf-8&oe=utf-8
         // And https://programtheblockchain.com/posts/2018/01/24/logging-and-watching-solidity-events/
 
-        _instance.StudentLoginEvent(studentName).watch(function(error, result)
+        _instance.StudentLoginEvent(studentLoginRecord).watch(function(error, result)
         {
           if (!error)
           {
-            console.log("[handleStudentLogin()] StudentLoginEvent() logged in as " + web3.toAscii(result.args.studentName) + ", with email as " + web3.toAscii(result.args.studentEmail) + ". No error");
+            console.log("[handleStudentLogin()] StudentLoginEvent() logged in as " + result.args.loginRecord + ", with email as " + web3.toAscii(result.args.studentEmail) + ". No error");
           }
 
           else
@@ -191,7 +193,7 @@ App = {
         //And https://ethereum.stackexchange.com/questions/9636/whats-the-proper-way-to-wait-for-a-transaction-to-be-mined-and-get-the-results
         
         var option = 'pending';
-        var date = '';
+        //var date = new Date(Date.now());
 
         web3.eth.filter(option, function(error, result)
         //web3.eth.filter(option).watch(function(error, result)
@@ -200,7 +202,9 @@ App = {
           {
             console.log('[handleStudentLogin()] Student logged in. ' + option + ' block result=' + result);
 
-            date = new Date(Date.now());
+            //****** The enrolledDate should be retrieved here, but if it is, then enrolledDate is undefined when Signup() is called in the smart contract because web3.eth.filer() isn't awaited
+            //date = new Date(Date.now());
+            //***********************************************************************************************************************************************************************************
 
             $('.btn-login').html('Logged In<br /><span style="font-size:10px">on ' + date).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
             $('.btn-login').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
@@ -217,7 +221,7 @@ App = {
         });
         //******
 
-        return _instance.StudentLogin(studentName, studentEmail, date, {from: account});
+        return _instance.StudentLogin(studentName, studentEmail, studentLoginRecord, {from: account});
       });
     });
   },
@@ -251,29 +255,9 @@ App = {
       }
 
       var account = accounts[0];
-      var courseData = '';
-      var enrolledDate = '';
 
       App.contracts.SignupAndAttendance.deployed().then(function(_instance)
       {
-        //****** https://gist.github.com/robertsimoes/4523a225801739e63b3feb5446f7c6e3
-        // And https://www.google.com/search?client=ubuntu&channel=fs&q=solidity+watch&ie=utf-8&oe=utf-8
-        // And https://programtheblockchain.com/posts/2018/01/24/logging-and-watching-solidity-events/
-
-        _instance.CourseSignupEvent(courseId).watch(function(error, result)
-        {
-          if (!error)
-          {
-            console.log("[handleSignup()] CourseSignupEvent() courseData is " + result.args.courseData + ". No error");
-          }
-
-          else
-          {
-            console.log("[handleSignup()] CourseSignupEvent() error=" + error);
-          }
-        });
-        //******
-
         var costInEth = 0;
 
         if(courseId != "intro-to-blockchain")
@@ -285,7 +269,26 @@ App = {
         //And https://ethereum.stackexchange.com/questions/9636/whats-the-proper-way-to-wait-for-a-transaction-to-be-mined-and-get-the-results
         
         var option = 'pending';
-        enrolledDate = new Date(Date.now());
+        var enrolledDate = new Date(Date.now());
+        var courseData = enrolledDate + ':' + courseId;
+
+        //****** https://gist.github.com/robertsimoes/4523a225801739e63b3feb5446f7c6e3
+        // And https://www.google.com/search?client=ubuntu&channel=fs&q=solidity+watch&ie=utf-8&oe=utf-8
+        // And https://programtheblockchain.com/posts/2018/01/24/logging-and-watching-solidity-events/
+
+        _instance.SignupEvent(courseData).watch(function(error, result)
+        {
+          if (!error)
+          {
+            console.log("[handleSignup()] SignupEvent() courseData is " + result.args.courseData + ". No error");
+          }
+
+          else
+          {
+            console.log("[handleSignup()] SignupEvent() error=" + error);
+          }
+        });
+        //******
 
         web3.eth.filter(option, function(error, result)
         //web3.eth.filter(option).watch(function(error, result)
@@ -331,7 +334,6 @@ App = {
             //if($('.btn-course-signup').text() != 'Enrolled') //http://api.jquery.com/text/
             //  $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables            
           
-            courseData = enrolledDate + ':' + courseId;
             console.log('[handleSignup()] courseData=' + courseData);
 
             //_instance.Signup(courseId, courseData, {from: account, value: costInEth * 1000000000000000000});
@@ -410,7 +412,7 @@ App = {
       //And https://ethereum.stackexchange.com/questions/9636/whats-the-proper-way-to-wait-for-a-transaction-to-be-mined-and-get-the-results
       
       var option = 'pending';
-      var date = '';
+      var date = new Date(Date.now());
 
       web3.eth.filter(option, function(error, result)
       //web3.eth.filter(option).watch(function(error, result)
@@ -418,8 +420,10 @@ App = {
         if (!error)
         {
           console.log('[handleAttendanceTaking()] courseCompletedId=' + courseCompletedId + ', ' + option + ' block result=' + result);
-          
-          date = new Date(Date.now());
+
+          //****** The enrolledDate should be retrieved here, but if it is, then enrolledDate is undefined when Signup() is called in the smart contract because web3.eth.filer() isn't awaited
+          //date = new Date(Date.now());
+          //***********************************************************************************************************************************************************************************
 
           $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').html('Course Completed<br /><span style="font-size:10px">on ' + date).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
           $('.btn-attendance-submit[data-button-id=' + courseCompletedId + '-attendance]').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
@@ -443,9 +447,24 @@ App = {
       var account = accounts[0];
 
       var courseData = date + ':' + courseCompletedId;
+      console.log('[handleAttendanceTaking()] courseData=' + courseData);
 
       App.contracts.SignupAndAttendance.deployed().then(function(_instance)
       {
+        _instance.AttendanceTakingEvent(courseData).watch(function(error, result)
+        {
+          if (!error)
+          {
+            console.log("[handleAttendanceTaking()] AttendanceTakingEvent() courseData is " + result.args.courseData + ". No error");
+          }
+
+          else
+          {
+            console.log("[handleAttendanceTaking()] AttendanceTakingEvent() error=" + error);
+          }
+        });
+        //******
+
         _instance.AttendanceTaking(courseData, {from: account});
       });
     });
