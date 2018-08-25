@@ -177,7 +177,7 @@ App = {
         {
           if (!error)
           {
-            console.log("[handleStudentLogin()] StudentLoginEvent() logged in as " + studentName + ". No error");
+            console.log("[handleStudentLogin()] StudentLoginEvent() logged in as " + web3.toAscii(result.args.studentName) + ", with email as " + web3.toAscii(result.args.studentEmail) + ". No error");
           }
 
           else
@@ -198,7 +198,7 @@ App = {
         {
           if (!error)
           {
-            console.log('[handleStudentLogin()] courseId=' + option + ' block result=' + result);
+            console.log('[handleStudentLogin()] Student logged in. ' + option + ' block result=' + result);
 
             date = new Date(Date.now());
 
@@ -251,6 +251,8 @@ App = {
       }
 
       var account = accounts[0];
+      var courseData = '';
+      var enrolledDate = '';
 
       App.contracts.SignupAndAttendance.deployed().then(function(_instance)
       {
@@ -262,7 +264,7 @@ App = {
         {
           if (!error)
           {
-            console.log("[handleSignup()] CourseSignupEvent() event fired. No error");
+            console.log("[handleSignup()] CourseSignupEvent() courseData is " + result.args.courseData + ". No error");
           }
 
           else
@@ -283,7 +285,7 @@ App = {
         //And https://ethereum.stackexchange.com/questions/9636/whats-the-proper-way-to-wait-for-a-transaction-to-be-mined-and-get-the-results
         
         var option = 'pending';
-        var date = '';
+        enrolledDate = new Date(Date.now());
 
         web3.eth.filter(option, function(error, result)
         //web3.eth.filter(option).watch(function(error, result)
@@ -292,9 +294,11 @@ App = {
           {
             console.log('[handleSignup()] courseId=' + courseId + ', ' + option + ' block result=' + result);
             
-            date = new Date(Date.now());
+            //****** The enrolledDate should be retrieved here, but if it is, then enrolledDate is undefined when Signup() is called in the smart contract because web3.eth.filer() isn't awaited
+            //enrolledDate = new Date(Date.now());
+            //***********************************************************************************************************************************************************************************
 
-            $('.btn-course-signup[data-course-id=' + courseId + ']').html('Enrolled<br /><span style="font-size:10px">on ' + date).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
+            $('.btn-course-signup[data-course-id=' + courseId + ']').html('Enrolled<br /><span style="font-size:10px">on ' + enrolledDate).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables
             
             //****** This isn't working ******/
             $('.btn-course-signup[data-course-id=' + courseId + ']').addClass('enrolled-course'); //https://www.w3schools.com/jquery/jquery_css_classes.asp
@@ -326,6 +330,11 @@ App = {
 
             //if($('.btn-course-signup').text() != 'Enrolled') //http://api.jquery.com/text/
             //  $('.btn-course-signup[data-course-id!=' + courseId + ']').attr('disabled', false); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables            
+          
+            courseData = enrolledDate + ':' + courseId;
+            console.log('[handleSignup()] courseData=' + courseData);
+
+            //_instance.Signup(courseId, courseData, {from: account, value: costInEth * 1000000000000000000});
           }
           else
           {
@@ -338,9 +347,10 @@ App = {
 
         //console.log($('.btn-course-signup').text());
 
-        var courseData = date + ':' + courseId;
+        // var courseData = enrolledDate + ':' + courseId;
+        // console.log('[handleSignup()] courseData=' + courseData);
+
         return _instance.Signup(courseId, courseData, {from: account, value: costInEth * 1000000000000000000});
-        //return _instance.Signup(courseId, {from: account});
       });
     });
   },

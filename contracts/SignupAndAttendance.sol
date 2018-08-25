@@ -31,8 +31,8 @@ contract SignupAndAttendance is Owned
 
 	address[] public studentAccounts;
 
-	event StudentLoginEvent(bytes32 _name);
-	event CourseSignupEvent(string _courseId);
+	event StudentLoginEvent(bytes32 studentName, bytes32 studentEmail);
+	event CourseSignupEvent(string courseData);
 
 	constructor() public 
 	{
@@ -48,7 +48,7 @@ contract SignupAndAttendance is Owned
 		student.email = _email;
 		student.loginDate.push(_date);
 
-		emit StudentLoginEvent(_name);
+		emit StudentLoginEvent(_name, _email);
 		studentAccounts.push(_address);
 	}
 
@@ -73,7 +73,7 @@ contract SignupAndAttendance is Owned
 	  	Student storage student = students[msg.sender];
 		student.signups.push(_courseData);
 
-		emit CourseSignupEvent(_courseId);
+		emit CourseSignupEvent(_courseData);
 
 	  //Return the total number of courses signed up for by the attendee.
 	  //return attendees[msg.sender].signups.push(courseId) - 1;
