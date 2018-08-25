@@ -401,6 +401,7 @@ App = {
         
           $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').append('<br /><br />Course Completed<br /><span style="font-size:10px">on ' + date).attr('disabled', true); //https://stackoverflow.com/questions/4893436/jquery-selectors-with-variables, https://stackoverflow.com/questions/14846506/append-prepend-after-and-before
           $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').css('color', 'green'); //https://gist.github.com/nathanchen/3243528
+          $('.btn-course-signup[data-course-id=' + courseCompletedId + ']').attr('disabled', true); //https://gist.github.com/nathanchen/3243528        
         }
         else
         {
