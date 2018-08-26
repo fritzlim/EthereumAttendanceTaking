@@ -20,5 +20,18 @@
 
 #### Speed bumps
 - Delaying contract actions
+*****
+
+
+## Coding practices in place:
+
+#### Explicitly marking visibility in functions and state variables
+- So that it's clear what the visibility is meant to be
+
+#### Differentiating functions and events
+- To help prevent calling the wrong thing in code, which prevents bugs
+
+#### Keeping fallback functions simple
+- To limit the work of these functions because they only have access to 2,300 gas
 
 See https://github.com/ethereum/wiki/wiki/Safety for more details.
