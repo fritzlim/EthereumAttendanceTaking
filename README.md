@@ -1,4 +1,4 @@
-# EthereumAttendanceTaking dApp
+### EthereumAttendanceTaking dApp
 
 This project is a dApp for the 2018 ConsenSys Developer Program.
 
@@ -15,6 +15,7 @@ This struct has the following members:
 `string[] loginRecord`,
 `string[] signupRrecord`, and
 `string[] courseCompletedRecord`.
+
 
 
 **How To Run the dApp**
