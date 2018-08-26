@@ -22,9 +22,10 @@ This struct has the following members:
 1. Use an Ubuntu 16.04 develoopment server with ganache-cli and npm installed
 2. Either fork or download this project
 3. Navigate into the project folder and run the following:
-truffle compile
-truffle migrate --reset
-npm run dev
+`truffle compile`
+`truffle migrate --reset`
+`npm run dev`
+
 
 
 
