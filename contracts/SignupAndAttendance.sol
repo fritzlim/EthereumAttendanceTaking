@@ -1,15 +1,35 @@
-pragma solidity 0.4.24;
+pragma solidity 0.4.24; //Protection in place: Solidity Pragma locked
+
+// ****** Notes ******/
+// Protections in place:
+// 	- Solidity Pragma locked
+// 	- Circuit Breaker - Emergency stop by Contract Creator
+//
+// Protections not implemented:
+// 	- Rentrancy protection
+// 	- Overflow protection
+// 	- Underflow protection
+// 	- Speed bumps
+//
+//
+// Coding practices in place:
+// 	- Explicitly marking visibility in functions and state variables
+//	- Differentiating functions and events
+//	- Keeping fallback functions simple
+// ********************
 
 contract Owned
 {
-    address owner;
+    address private _owner;
     
-    constructor() public {
-        owner = msg.sender;
+    constructor() public
+    {
+        _owner = msg.sender;
     }
     
-   modifier onlyOwner {
-       require(msg.sender == owner);
+   modifier onlyOwner
+   {
+       require(msg.sender == _owner);
        _;
    }
 }
@@ -18,7 +38,6 @@ contract SignupAndAttendance is Owned
 {
 	struct Student
 	{
-		//bytes32 courseId;
 		bytes32 name;
 		bytes32 email;
 		string[] loginRecord;
@@ -35,12 +54,44 @@ contract SignupAndAttendance is Owned
 	event SignupEvent(string courseData);
 	event AttendanceTakingEvent(string courseData);
 
+	event FallbackEvent(address _sender); //For the fallback function
+
+	//****** Protections in place: Avoiding common attacks ******
+		bool private _stopped = false; //For Circuit Breaker
+
+		function toggleEmergencyStopStatus() onlyOwner public returns(bool success)
+		{
+		    _stopped = !_stopped; // Toggle the value of stopped
+		    return _stopped;
+		}
+
+		// Emergency stop
+		modifier stopInEmergency
+		{
+			require(!_stopped);
+			_;
+		}
+
+		// Normal operation and emergency
+		modifier onlyInEmergency
+		{
+			if (_stopped)
+			_;
+		}
+
+		// Check if the status of the contract is active
+		function checkActive() public view returns(bool stoppedstatus)
+		{
+			return _stopped;
+		}
+	//***********************************************************
+
 	constructor() public 
 	{
 
 	}
 
-	function StudentLogin(bytes32 _name, bytes32 _email, string _loginRecord) public
+	function StudentLogin(bytes32 _name, bytes32 _email, string _loginRecord) stopInEmergency public
 	{
 		var _address = msg.sender;
 		Student storage student = students[_address];
@@ -54,7 +105,7 @@ contract SignupAndAttendance is Owned
 		emit StudentLoginEvent(_loginRecord);
 	}
 
-	function Signup(string _courseId, string _courseData) onlyOwner payable public
+	function Signup(string _courseId, string _courseData) onlyOwner stopInEmergency payable public
 	{
 		//require(courseId >= 0 && courseId <= 2);
 		//bytes32 memory temp = "intro-to-blockchain";
@@ -81,7 +132,7 @@ contract SignupAndAttendance is Owned
 	  //return attendees[msg.sender].signups.push(courseId) - 1;
 	}
 
-	function AttendanceTaking(string _courseData) onlyOwner public
+	function AttendanceTaking(string _courseData) onlyOwner stopInEmergency public
 	{
 		Student storage student = students[msg.sender];
 		student.coursesCompletedRecord.push(_courseData);
@@ -105,6 +156,13 @@ contract SignupAndAttendance is Owned
        return keccak256(a) == keccak256(b);
    	}
    	//******
+
+   	//****** Fallback function
+	function () public
+	{
+		emit FallbackEvent(msg.sender);
+    }
+    //******
 
 	// //****** Taken from https://ethereum.stackexchange.com/questions/23549/convert-string-to-bytes32-in-web3j
 	// function stringToBytes32 (string _string) view public

@@ -93,6 +93,7 @@ App = {
     $(document).on('click', '.btn-login', App.handleStudentLogin);
 
     $(document).on('click', '.btn-attendance-submit', App.handleAttendanceTaking);
+    $(document).on('click', '#btn-emergency-stop', App.handleEmergencyStop);
   },
 
   markAdopted: function(adopters, account) {
@@ -221,7 +222,7 @@ App = {
         });
         //******
 
-        return _instance.StudentLogin(studentName, studentEmail, studentLoginRecord, {from: account});
+        return _instance.StudentLogin(studentName, studentEmail, studentLoginRecord, {from: account, gas:2000000, gasPrice:1000000000});
       });
     });
   },
@@ -352,7 +353,7 @@ App = {
         // var courseData = enrolledDate + ':' + courseId;
         // console.log('[handleSignup()] courseData=' + courseData);
 
-        return _instance.Signup(courseId, courseData, {from: account, value: costInEth * 1000000000000000000});
+        return _instance.Signup(courseId, courseData, {from: account, value: costInEth * 1000000000000000000, gas:2000000, gasPrice:1000000000});
       });
     });
   },
@@ -465,8 +466,33 @@ App = {
         });
         //******
 
-        _instance.AttendanceTaking(courseData, {from: account});
+        _instance.AttendanceTaking(courseData, {from: account, gas:2000000, gasPrice:1000000000});
       });
+    });
+  },
+  handleEmergencyStop: function(event)
+  {
+    console.log('[handleEmergencyStop()] Emergency stop clicked');
+
+    web3.eth.getAccounts(function(error, accounts)
+    {
+      if (error)
+      {
+        console.log(error);
+      }
+
+      var account = accounts[0];
+
+      App.contracts.SignupAndAttendance.deployed().then(function(_instance)
+      {
+        return _instance.toggleEmergencyStopStatus({from: account, gas:2000000, gasPrice:1000000000});
+      }).then(function(result)
+        {
+          if(result)
+            $('.emergency-stop-status').css('background-color', 'red').css('color', 'white').text('EMERGENCY STOP ACTIVATED').show();
+          else
+            $('.emergency-stop-status').css('background-color', 'transparent').text('&nbsp;').hide();
+        });
     });
   }
 }; //End of App
@@ -483,7 +509,9 @@ App = {
 
 $(function() {
   $(window).on('load', function() {
-    //$('#loader').hide();
+    //Hide the emergecny stop status indicators
+    $('.emergency-stop-status').hide();
+
     App.init();
 
     //Disable all course sign up buttons
