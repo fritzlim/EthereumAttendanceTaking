@@ -1,4 +1,4 @@
-EthereumAttendanceTaking dApp
+# EthereumAttendanceTaking dApp
 
 This project is a dApp for the 2018 ConsenSys Developer Program.
 
@@ -17,7 +17,7 @@ This struct has the following members:
 `string[] courseCompletedRecord`.
 
 
-**How To Run the dApp
+**How To Run the dApp**
 
 1. Use an Ubuntu 16.04 develoopment server with ganache-cli and npm installed
 2. Either fork or download this project
