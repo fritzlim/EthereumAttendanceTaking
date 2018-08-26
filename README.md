@@ -1,4 +1,4 @@
-EthereumAttendanceTaking
+EthereumAttendanceTaking dApp
 
 This project is a dApp for the 2018 ConsenSys Developer Program.
 
@@ -7,4 +7,13 @@ Each of these steps requires confirming the transaction on MetaMask.
 
 The User Interface will show the transaction status.
 
-The information is stored in a struct.
+The sign up information is stored in a struct of `Student`.
+This struct has the following members:
+`bytes32 name`,
+`bytes32 email`,
+`string[] loginRecord`,
+`string[] signupRrecord`, and
+`string[] courseCompletedRecord`.
+
+
+
