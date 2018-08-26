@@ -27,6 +27,7 @@ This struct has the following members:
 `npm run dev`
 A browser window should automatically open with the URL http://localhost:3000.
 
+If you need help in setting up the development machine, see the Wiki https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Setting-Up-the-Development-Machine and https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Running-the-Project.
 
 
 
