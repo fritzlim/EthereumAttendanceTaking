@@ -17,7 +17,7 @@ This struct has the following members:
 `string[] courseCompletedRecord`.
 
 
-**How To Set It Up
+**How To Run the dApp
 
 1. Use an Ubuntu 16.04 develoopment server with ganache-cli and npm installed
 2. Either fork or download this project
@@ -25,6 +25,8 @@ This struct has the following members:
 `truffle compile`
 `truffle migrate --reset`
 `npm run dev`
+A browser window should automatically open with the URL http://localhost:3000.
+
 
 
 
