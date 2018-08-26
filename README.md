@@ -26,6 +26,7 @@ This struct has the following members:
 `truffle migrate --reset`
 `npm run dev`
 A browser window should automatically open with the URL http://localhost:3000.
+4. Note that you will also need the MetaMask browser extension installed. If you're using Firefox, see https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/. If you're using Chrome, see https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en.
 
 If you need help in setting up the development machine, see the Wiki https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Setting-Up-the-Development-Machine and https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Running-the-Project.
 
