@@ -21,11 +21,11 @@ This struct has the following members:
 **How To Run the dApp**
 
 1. Use an Ubuntu 16.04 develoopment server with ganache-cli and npm installed
-2. Either fork or download this project
+2. Either fork or download this project. For convenience (to not have to deal with Linux file and folder permissions), extract the project onto the Desktop
 3. Navigate into the project folder and run the following:
-`truffle compile`
-`truffle migrate --reset`
-`npm run dev`
+    1. `truffle compile`
+    1. `truffle migrate --reset`
+    1. `npm run dev`
 A browser window should automatically open with the URL http://localhost:3000.
 4. Note that you will also need the MetaMask browser extension installed. If you're using Firefox, see https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/. If you're using Chrome, see https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en.
 
