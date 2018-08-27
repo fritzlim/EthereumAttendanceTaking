@@ -95,7 +95,7 @@ contract SignupAndAttendance is Owned
 
 	}
 
-	function StudentLogin(bytes32 _name, bytes32 _email, string _loginRecord) stopInEmergency public
+	function StudentLogin(bytes32 _name, bytes32 _email, string _loginRecord) stopInEmergency private
 	{
 		var _address = msg.sender;
 		Student storage student = students[_address];
@@ -136,7 +136,7 @@ contract SignupAndAttendance is Owned
 	  //return attendees[msg.sender].signups.push(courseId) - 1;
 	}
 
-	function AttendanceTaking(string _courseData) onlyOwner stopInEmergency public
+	function AttendanceTaking(string _courseData) onlyOwner stopInEmergency private
 	{
 		Student storage student = students[msg.sender];
 		student.coursesCompletedRecord.push(_courseData);
@@ -155,14 +155,14 @@ contract SignupAndAttendance is Owned
 	// }
 
 	//****** Taken from https://ethereum.stackexchange.com/questions/30912/how-to-compare-strings-in-solidity
-	function compareStrings (string a, string b) view public returns (bool)
+	function compareStrings (string a, string b) view private returns (bool)
 	{
        return keccak256(a) == keccak256(b);
    	}
    	//******
 
    	//****** Fallback function
-	function () public
+	function () private
 	{
 		emit FallbackEvent(msg.sender);
     }
