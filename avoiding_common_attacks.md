@@ -38,4 +38,5 @@
 #### Keeping fallback functions simple
 - To limit the work of these functions because they only have access to 2,300 gas
 
-See https://github.com/ethereum/wiki/wiki/Safety for more details.
+****
+See https://github.com/ethereum/wiki/wiki/Safety for more details on avoiding common atacks.
