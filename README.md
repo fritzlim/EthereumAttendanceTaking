@@ -33,6 +33,7 @@ A browser window should automatically open with the URL http://localhost:3000. T
 5. For details on setting up MetaMask, see [Running the Project](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Running-the-Project).
 
 If you need help in setting up the development machine, see the Wiki page [Setting Up the Development Machine](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Setting-Up-the-Development-Machine).
+
 If you need details on running the project, see the Wiki page [Running the Project](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Running-the-Project).
 
 
