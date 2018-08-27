@@ -1,3 +1,6 @@
+#### Fail early and fail loud
+- I used `require()` for the payable functions to ensure that a specific amount of Ether is transacted.
+
 #### Function modifiers
 - I made the decision to use a modifier to ensure that the person who logged in is the only one who can use the dApp.
 
