@@ -95,7 +95,7 @@ contract SignupAndAttendance is Owned
 
 	}
 
-	function StudentLogin(bytes32 _name, bytes32 _email, string _loginRecord) stopInEmergency private
+	function StudentLogin(bytes32 _name, bytes32 _email, string _loginRecord) stopInEmergency public
 	{
 		var _address = msg.sender;
 		Student storage student = students[_address];
@@ -136,7 +136,7 @@ contract SignupAndAttendance is Owned
 	  //return attendees[msg.sender].signups.push(courseId) - 1;
 	}
 
-	function AttendanceTaking(string _courseData) onlyOwner stopInEmergency private
+	function AttendanceTaking(string _courseData) onlyOwner stopInEmergency public
 	{
 		Student storage student = students[msg.sender];
 		student.coursesCompletedRecord.push(_courseData);
@@ -162,7 +162,7 @@ contract SignupAndAttendance is Owned
    	//******
 
    	//****** Fallback function
-	function () private
+	function () public
 	{
 		emit FallbackEvent(msg.sender);
     }
