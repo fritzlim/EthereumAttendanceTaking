@@ -32,8 +32,7 @@ A browser window should automatically open with the URL http://localhost:3000. T
 4. Note that you will also need the MetaMask browser extension installed. If you're using Firefox, see https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/. If you're using Chrome, see https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en.
 5. For details on setting up MetaMask, see [Running the Project](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Running-the-Project).
 
-If you need help in setting up the development machine, see the Wiki page [Setting Up the Development Machine](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Setting-Up-the-Development-Machine).
-
+If you need help in setting up the development machine, see the Wiki page [Setting Up the Development Machine](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Setting-Up-the-Development-Machine).<br />
 If you need details on running the project, see the Wiki page [Running the Project](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Running-the-Project).
 
 
