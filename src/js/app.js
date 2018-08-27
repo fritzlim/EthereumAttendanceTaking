@@ -483,15 +483,120 @@ App = {
 
       var account = accounts[0];
 
+      // //****** https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethfilter
+      // //And https://ethereum.stackexchange.com/questions/9636/whats-the-proper-way-to-wait-for-a-transaction-to-be-mined-and-get-the-results
+      
+      // var option = 'pending';
+
+      // web3.eth.filter(option, function(error, result)
+      // {
+      //   if (!error)
+      //   {
+      //     console.log('[handleEmergencyStop()]' + option + ' block result=' + result);
+
+      //     _instance.EmergencyStopEvent().watch(function(error, result)
+      //     {
+      //       if (!error)
+      //       {
+      //         console.log('[handleEmergencyStop()] toggleEmergencyStopStatus() result=' + result[0]);
+      //       }
+
+      //       else
+      //       {
+      //         console.log("[handleEmergencyStop()] toggleEmergencyStopStatus() error=" + error);
+      //       }
+      //     });
+      //   }
+      //   else
+      //   {
+      //     console.log('[handleEmergencyStop()] ' + option + ' block error=' + error);
+      //   }
+
+      //   web3.eth.filter(option).stopWatching();
+      // });
+      // //******
+
       App.contracts.SignupAndAttendance.deployed().then(function(_instance)
       {
+        // _instance.EmergencyStopEvent().watch(function(error, result)
+        // {
+        //   if (!error)
+        //   {
+        //     console.log('[handleEmergencyStop()] toggleEmergencyStopStatus() result=' + result[0]);
+        //   }
+
+        //   else
+        //   {
+        //     console.log("[handleEmergencyStop()] toggleEmergencyStopStatus() error=" + error);
+        //   }
+        // });
+
         return _instance.toggleEmergencyStopStatus({from: account, gas:2000000, gasPrice:1000000000});
-      }).then(function(result)
+      }).then(function(toggleEmergencyStopStatusResult)
         {
-          if(result)
-            $('.emergency-stop-status').css('background-color', 'red').css('color', 'white').text('EMERGENCY STOP ACTIVATED').show();
-          else
-            $('.emergency-stop-status').css('background-color', 'transparent').text('&nbsp;').hide();
+          //****** https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethfilter
+          //And https://ethereum.stackexchange.com/questions/9636/whats-the-proper-way-to-wait-for-a-transaction-to-be-mined-and-get-the-results
+          
+          var option = 'pending';
+
+          web3.eth.filter(option, function(error, blockResult)
+          {
+            if (!error)
+            {
+              console.log('[handleEmergencyStop()]' + option + ' block result=' + blockResult);
+              console.log('[handleEmergencyStop()] toggleEmergencyStopStatusResult=' + toggleEmergencyStopStatusResult);
+
+              console.log('[handleEmergencyStop()] emergency stop toggle indicator visible=' + $('.emergency-stop-status').is(':visible'));
+
+              if(!$('.emergency-stop-status').is(':visible')) //http://pietschsoft.com/post/2015/09/24/JavaScript-Basics-Is-Element-Hidden-or-Visible
+              {
+                $('.emergency-stop-status').css('background-color', 'red').css('color', 'white').text('EMERGENCY STOP ACTIVATED').show();
+              }
+              else
+                $('.emergency-stop-status').css('background-color', 'transparent').text('&nbsp;').hide();
+
+              // _instance.EmergencyStopEvent().watch(function(error, result)
+              // {
+              //   if (!error)
+              //   {
+              //     console.log('[handleEmergencyStop()] toggleEmergencyStopStatus() result=' + result[0]);
+              //   }
+
+              //   else
+              //   {
+              //     console.log("[handleEmergencyStop()] toggleEmergencyStopStatus() error=" + error);
+              //   }
+              // });
+            }
+            else
+            {
+              console.log('[handleEmergencyStop()] ' + option + ' block error=' + error);
+            }
+
+            web3.eth.filter(option).stopWatching();
+          });
+          //******
+
+          // _instance.EmergencyStopEvent().watch(function(error, result)
+          // {
+          //   if (!error)
+          //   {
+          //     console.log('[handleEmergencyStop()] toggleEmergencyStopStatus() result=' + result[0]);
+          //   }
+
+          //   else
+          //   {
+          //     console.log("[handleEmergencyStop()] toggleEmergencyStopStatus() error=" + error);
+          //   }
+          // });
+
+
+          // console.log('[handleEmergencyStop()] toggleEmergencyStopStatus() result=' + result[0]);
+
+          // if(result)
+          //   $('.emergency-stop-status').css('background-color', 'red').css('color', 'white').text('EMERGENCY STOP ACTIVATED').show();
+          // else
+          //   $('.emergency-stop-status').css('background-color', 'transparent').text('&nbsp;').hide();
         });
     });
   }

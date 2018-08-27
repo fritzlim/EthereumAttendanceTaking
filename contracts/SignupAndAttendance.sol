@@ -54,14 +54,18 @@ contract SignupAndAttendance is Owned
 	event SignupEvent(string courseData);
 	event AttendanceTakingEvent(string courseData);
 
+	event EmergencyStopEvent(bool stopped); //Protection in place: Event that's fired upon activation of circuit breaker
+
 	event FallbackEvent(address _sender); //For the fallback function
 
 	//****** Protections in place: Avoiding common attacks ******
 		bool private _stopped = false; //For Circuit Breaker
 
-		function toggleEmergencyStopStatus() onlyOwner public returns(bool success)
+		function toggleEmergencyStopStatus() onlyOwner public returns(bool stoppedStatus)
 		{
 		    _stopped = !_stopped; // Toggle the value of stopped
+		    emit EmergencyStopEvent(_stopped);
+
 		    return _stopped;
 		}
 
