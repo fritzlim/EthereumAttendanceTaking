@@ -1,6 +1,8 @@
 ### EthereumAttendanceTaking dApp
 
-This project is a dApp for the 2018 ConsenSys Developer Program.
+This project is a proof-of-concept dApp for the 2018 ConsenSys Developer Program.
+
+**Introduction and Use Case**
 
 It demonstrates an idea of using blockchain to sign up for a course, purchase a course, and submit attendance for the course.
 Each of these steps requires confirming the transaction on MetaMask.
@@ -21,15 +23,17 @@ This struct has the following members:
 **How To Run the dApp**
 
 1. Use an Ubuntu 16.04 develoopment server with ganache-cli and npm installed
-2. Either fork or download this project
+2. Either fork or download this project. For convenience (to not have to deal with Linux file and folder permissions), extract the project onto the Desktop
 3. Navigate into the project folder and run the following:
-`truffle compile`
-`truffle migrate --reset`
-`npm run dev`
-A browser window should automatically open with the URL http://localhost:3000.
+    1. `truffle compile`
+    1. `truffle migrate --reset`
+    1. `npm run dev`
+A browser window should automatically open with the URL http://localhost:3000. This is the dApp frontend.
 4. Note that you will also need the MetaMask browser extension installed. If you're using Firefox, see https://addons.mozilla.org/en-US/firefox/addon/ether-metamask/. If you're using Chrome, see https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en.
+5. For details on setting up MetaMask, see [Running the Project](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Running-the-Project).
 
-If you need help in setting up the development machine, see the Wiki https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Setting-Up-the-Development-Machine and https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Running-the-Project.
+If you need help in setting up the development machine, see the Wiki page [Setting Up the Development Machine](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Setting-Up-the-Development-Machine).<br />
+If you need details on running the project, see the Wiki page [Running the Project](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Running-the-Project).
 
 
 
