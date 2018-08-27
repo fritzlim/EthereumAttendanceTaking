@@ -20,6 +20,10 @@
 
 #### Speed bumps
 - Delaying contract actions
+
+#### Limiting the length of strings
+- So that it's unlikely that operations will encounter an out of gas situation
+
 *****
 
 
