@@ -9,3 +9,4 @@
 
 #### Minimising transaction cost
 - I declared variables as `bytes32` instead of `string` whenever possible.
+- However, `string[]` was used for certain variables. This can lead to high transaction costs because the array can grow to an uncontrolled size.
