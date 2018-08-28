@@ -1,4 +1,4 @@
-The following design pattern and decisions were taken into consideration:
+The following design patterns and decisions were taken into consideration:
 
 #### Fail early and fail loud
 - I used `require()` for the payable functions to ensure that a specific amount of Ether is transacted.
