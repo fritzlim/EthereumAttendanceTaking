@@ -35,6 +35,14 @@ A browser window should automatically open with the URL http://localhost:3000. T
 If you need help in setting up the development machine, see the Wiki page [Setting Up the Development Machine](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Setting-Up-the-Development-Machine).<br />
 If you need details on running the project, see the Wiki page [Running the Project](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/Running-the-Project).
 
+****
+
+**Running the unit tests**
+
+1. **IMPORTANT** - Delete the `onlyOwner` modifier in the functions in 'SignupAndAttendance.sol'. The `onlyOwner` modifier makes the unit tests fail. Is this a known issue with running truffle tests?
+1. Navigate into the project folder and run the following:
+    1. `truffle test`
+1. **Expected outcome** - All tests will pass except the last one (testSignupWithEmergencyStopEngaged will fail). This is a known issue and I think it's because I have a bug in that test.
 
 
 
