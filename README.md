@@ -44,5 +44,7 @@ If you need details on running the project, see the Wiki page [Running the Proje
 1. **Expected outcome** - All tests will pass except the last one (testSignupWithEmergencyStopEngaged will not emit any event). This is the expected outcome because once the emrgency stop is engaged, the smart contract will not function.
 1. Once done with running the tests, insert the `OnlyOwner` modifier back into the `Signup()` and `AttendanceTaking()` functions in the smart contract "SignupAndAttendance.sol" file.
 
+See [The Solidity Unit Tests](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/3.-The-Solidity-Unit-Tests) to know what the tests are for and why they were written.
+
 
 
