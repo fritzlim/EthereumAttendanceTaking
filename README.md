@@ -48,8 +48,11 @@ See [The Solidity Unit Tests](https://github.com/fritzlim/EthereumAttendanceTaki
 
 ****
 
-This project doesn't make use of a library nor is one written for it.
-This project doesn't implement any of the bonus points (stretch) requirements.
+**Notes**
+
+1. This project doesn't make use of a library nor is one written for it.
+1. This project doesn't implement any of the bonus points (stretch) requirements.
+
 See [ConsenSys Academy’s 2018 Developer Program Final Project](https://docs.google.com/document/d/1LgafnTykmi4gtRnqiwANfbggQKn6dkiqVxZRoyPo3IA/edit) for details on the project specifications and requirements.
 
 
