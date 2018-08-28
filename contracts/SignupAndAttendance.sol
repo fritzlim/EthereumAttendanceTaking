@@ -45,10 +45,10 @@ contract SignupAndAttendance is Owned
 		string[] coursesCompletedRecord;
 	}
 
-	mapping (address => uint) public balances;
-	mapping (address => Student) public students;
+	mapping (address => uint) private balances;
+	mapping (address => Student) private students;
 
-	address[] public studentAccounts;
+	address[] private studentAccounts;
 
 	event StudentLoginEvent(string loginRecord);
 	event SignupEvent(string courseData);
@@ -61,7 +61,7 @@ contract SignupAndAttendance is Owned
 	//****** Protections in place: Avoiding common attacks ******
 		bool private _stopped = false; //For Circuit Breaker
 
-		function toggleEmergencyStopStatus() onlyOwner public returns(bool stoppedStatus)
+		function ToggleEmergencyStopStatus() public returns(bool stoppedStatus)
 		{
 		    _stopped = !_stopped; // Toggle the value of stopped
 		    emit EmergencyStopEvent(_stopped);
@@ -95,7 +95,7 @@ contract SignupAndAttendance is Owned
 
 	}
 
-	function StudentLogin(bytes32 _name, bytes32 _email, string _loginRecord) stopInEmergency public
+	function StudentLogin(bytes32 _name, bytes32 _email, string _loginRecord) stopInEmergency public returns (string)
 	{
 		var _address = msg.sender;
 		Student storage student = students[_address];
@@ -107,16 +107,23 @@ contract SignupAndAttendance is Owned
 		studentAccounts.push(_address);
 
 		emit StudentLoginEvent(_loginRecord);
+
+		return student.loginRecord[student.loginRecord.length - 1];
 	}
 
-	function Signup(string _courseId, string _courseData) onlyOwner stopInEmergency payable public
+	function GetStudentAccounts() public view returns (address[])
+	{
+		return studentAccounts;
+	}
+
+	function Signup(string _courseId, string _courseData) onlyOwner stopInEmergency payable public returns (string)
 	{
 		//require(courseId >= 0 && courseId <= 2);
 		//bytes32 memory temp = "intro-to-blockchain";
 
 		//bytes32 test = stringToBytes32(_courseId);
 	  	
-	  	if(compareStrings("intro-to-blockchain", _courseId))
+	  	if(CompareStrings("intro-to-blockchain", _courseId))
 	  	{
 			require(msg.value == 0 ether);
 			balances[msg.sender] += msg.value;
@@ -132,16 +139,20 @@ contract SignupAndAttendance is Owned
 
 		emit SignupEvent(_courseData);
 
+		return student.signupRecord[student.signupRecord.length - 1];
+
 	  //Return the total number of courses signed up for by the attendee.
 	  //return attendees[msg.sender].signups.push(courseId) - 1;
 	}
 
-	function AttendanceTaking(string _courseData) onlyOwner stopInEmergency public
+	function AttendanceTaking(string _courseData) onlyOwner stopInEmergency public returns (string)
 	{
 		Student storage student = students[msg.sender];
 		student.coursesCompletedRecord.push(_courseData);
 
 		emit AttendanceTakingEvent(_courseData);
+
+		return student.coursesCompletedRecord[student.coursesCompletedRecord.length - 1];
 	}
 
 	// function EmitCourseSignupSucessful(_courseId)
@@ -155,7 +166,7 @@ contract SignupAndAttendance is Owned
 	// }
 
 	//****** Taken from https://ethereum.stackexchange.com/questions/30912/how-to-compare-strings-in-solidity
-	function compareStrings (string a, string b) view private returns (bool)
+	function CompareStrings (string a, string b) view private returns (bool)
 	{
        return keccak256(a) == keccak256(b);
    	}

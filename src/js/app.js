@@ -201,7 +201,7 @@ App = {
         {
           if (!error)
           {
-            console.log('[handleStudentLogin()] Student logged in. ' + option + ' block result=' + result);
+            console.log('[handleStudentLogin()] Student logged in. (block option: ' + option + ') block result=' + result);
 
             //****** The enrolledDate should be retrieved here, but if it is, then enrolledDate is undefined when Signup() is called in the smart contract because web3.eth.filer() isn't awaited
             //date = new Date(Date.now());
@@ -215,7 +215,7 @@ App = {
           }
           else
           {
-            console.log('[handleStudentLogin()] ' + option + ' block error=' + error);
+            console.log('[handleStudentLogin()] (block option: ' + option + ') block error=' + error);
           }
 
           web3.eth.filter(option).stopWatching();
@@ -296,7 +296,7 @@ App = {
         {
           if (!error)
           {
-            console.log('[handleSignup()] courseId=' + courseId + ', ' + option + ' block result=' + result);
+            console.log('[handleSignup()] courseId=' + courseId + ', (block option:' + option + ') block result=' + result);
             
             //****** The enrolledDate should be retrieved here, but if it is, then enrolledDate is undefined when Signup() is called in the smart contract because web3.eth.filer() isn't awaited
             //enrolledDate = new Date(Date.now());
@@ -341,7 +341,7 @@ App = {
           }
           else
           {
-            console.log('[handleSignup()] ' + option + ' block error=' + error);
+            console.log('[handleSignup()] (block option:' + option + ') block error=' + error);
           }
 
           web3.eth.filter(option).stopWatching();
@@ -420,7 +420,7 @@ App = {
       {
         if (!error)
         {
-          console.log('[handleAttendanceTaking()] courseCompletedId=' + courseCompletedId + ', ' + option + ' block result=' + result);
+          console.log('[handleAttendanceTaking()] courseCompletedId=' + courseCompletedId + ', (block option: ' + option + ') block result=' + result);
 
           //****** The enrolledDate should be retrieved here, but if it is, then enrolledDate is undefined when Signup() is called in the smart contract because web3.eth.filer() isn't awaited
           //date = new Date(Date.now());
@@ -438,7 +438,7 @@ App = {
         }
         else
         {
-          console.log('[handleAttendanceTaking()] ' + option + ' block error=' + error);
+          console.log('[handleAttendanceTaking()] (block option: ' + option + ') block error=' + error);
         }
 
         web3.eth.filter(option).stopWatching();
@@ -531,7 +531,7 @@ App = {
         //   }
         // });
 
-        return _instance.toggleEmergencyStopStatus({from: account, gas:2000000, gasPrice:1000000000});
+        return _instance.ToggleEmergencyStopStatus({from: account, gas:2000000, gasPrice:1000000000});
       }).then(function(toggleEmergencyStopStatusResult)
         {
           //****** https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethfilter
@@ -543,7 +543,7 @@ App = {
           {
             if (!error)
             {
-              console.log('[handleEmergencyStop()]' + option + ' block result=' + blockResult);
+              console.log('[handleEmergencyStop()] (block option: ' + option + ') block result=' + blockResult);
               console.log('[handleEmergencyStop()] toggleEmergencyStopStatusResult=' + toggleEmergencyStopStatusResult);
 
               console.log('[handleEmergencyStop()] emergency stop toggle indicator visible=' + $('.emergency-stop-status').is(':visible'));
@@ -570,7 +570,7 @@ App = {
             }
             else
             {
-              console.log('[handleEmergencyStop()] ' + option + ' block error=' + error);
+              console.log('[handleEmergencyStop()] (block option: ' + option + ') block error=' + error);
             }
 
             web3.eth.filter(option).stopWatching();
