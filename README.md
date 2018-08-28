@@ -1,6 +1,6 @@
 ### EthereumAttendanceTaking dApp
 
-This project is a proof-of-concept dApp for the 2018 ConsenSys Developer Program.
+This project is a proof-of-concept dApp for the 2018 ConsenSys Developer Program certification.
 
 **Introduction and Use Case**
 
