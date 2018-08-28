@@ -46,5 +46,11 @@ If you need details on running the project, see the Wiki page [Running the Proje
 
 See [The Solidity Unit Tests](https://github.com/fritzlim/EthereumAttendanceTaking/wiki/3.-The-Solidity-Unit-Tests) to know what the tests are for and why they were written.
 
+****
+
+This project doesn't make use of a library nor is one written for it.
+This project doesn't implement any of the bonus points (stretch) requirements.
+See [ConsenSys Academy’s 2018 Developer Program Final Project](https://docs.google.com/document/d/1LgafnTykmi4gtRnqiwANfbggQKn6dkiqVxZRoyPo3IA/edit) for details on the project specifications and requirements.
+
 
 
