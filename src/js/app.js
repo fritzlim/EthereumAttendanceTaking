@@ -212,6 +212,9 @@ App = {
 
             $('#student-name-input').attr('disabled', true);
             $('#student-email-input').attr('disabled', true);
+
+            var studentAccounts = _instance.GetStudentAccounts();
+            console.log("[GetStudentAccounts()] studentAccounts=" + studentAccounts);
           }
           else
           {
