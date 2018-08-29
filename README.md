@@ -1,7 +1,7 @@
 ### EthereumAttendanceTaking dApp
 
-This project is a proof-of-concept dApp for the 2018 ConsenSys Developer Program certification.
-It started of from the Pet Shop example, which can be [found on GitHub](https://github.com/truffle-box/pet-shop-box).
+This project is a proof-of-concept dApp for the 2018 ConsenSys Developer Program certification.<br />
+It started off from the Pet Shop example, which can be [found on GitHub](https://github.com/truffle-box/pet-shop-box).
 
 **Introduction and Use Case**
 
