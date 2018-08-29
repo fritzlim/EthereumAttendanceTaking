@@ -40,7 +40,7 @@ If you need details on running the project, see the Wiki page [Running the Proje
 **Running the unit tests**
 
 1. **IMPORTANT** - Delete the `onlyOwner` modifier in the `Signup()` and `AttendanceTaking()` functions in the smart contract "SignupAndAttendance.sol" file. The `onlyOwner` modifier makes the unit tests fail. Is this a known issue with running truffle tests?
-1. Navigate into the project folder and run: `truffle test`.
+1. Navigate into the project folder and run: `truffle test`. Please ignore the Pet SHop (adoption) tests, as I forgot to remove them.
 1. **Expected outcome** - All tests will pass except the last one (testSignupWithEmergencyStopEngaged will not emit any event). This is the expected outcome because once the emrgency stop is engaged, the smart contract will not function.
 1. Once done with running the tests, insert the `OnlyOwner` modifier back into the `Signup()` and `AttendanceTaking()` functions in the smart contract "SignupAndAttendance.sol" file.
 
